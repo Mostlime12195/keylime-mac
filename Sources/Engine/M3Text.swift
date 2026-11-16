@@ -25,6 +25,7 @@ public enum M3Text {
 
     public static func scalars(_ s: String) -> Scalars { Array(s.unicodeScalars) }
     public static func string(_ u: Scalars) -> String { var v = String.UnicodeScalarView(); v.append(contentsOf: u); return String(v) }
+    public static func string(_ u: String.UnicodeScalarView) -> String { String(u) }
     public static func string(_ u: ArraySlice<Unicode.Scalar>) -> String { var v = String.UnicodeScalarView(); v.append(contentsOf: u); return String(v) }
 
     /// ASCII lowercase (Python str.lower on the ASCII words this decoder handles; other scalars kept)

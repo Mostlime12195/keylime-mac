@@ -214,7 +214,7 @@ final class M3Ctx {
         }
         prefixes = ps
         cap = (tw.map { $0.unicodeScalars.filter { $0 != "'" }.count } + [4]).max()! + 4
-        splitWords = tw.filter { $0.unicodeScalars.count >= 3 && (D.lex.index[$0] != nil || ul.contains($0)) }
+        splitWords = Array(tw).sorted().filter { $0.unicodeScalars.count >= 3 && (D.lex.index[$0] != nil || ul.contains($0)) }
     }
 
     func validWord(_ w: String) -> Bool {
