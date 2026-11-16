@@ -47,14 +47,16 @@ struct M3Spec {
     let vocab: ModelFile
     let lexicon: ModelFile
     let ngram: ModelFile?
+    /// the delete index (m3_symspell.bin); built from the lexicon when the manifest has none
+    let symspell: ModelFile?
     let meta: M3Meta
     let params: M3Params
-    var files: [ModelFile] { [vocab, lexicon, encoder, decoder] + (ngram.map { [$0] } ?? []) }
+    var files: [ModelFile] { [vocab, lexicon, encoder, decoder] + [symspell, ngram].compactMap { $0 } }
 
     static func from(_ v: V2Model) -> M3Spec? {
         func f(_ r: String) -> ModelFile? { v.file(r).map { ModelFile(file: $0.file, size: $0.size, sha256: $0.sha256) } }
         guard let e = f("encoder"), let d = f("decoder"), let voc = f("vocab"), let lex = f("lexicon") else { return nil }
-        return M3Spec(encoder: e, decoder: d, vocab: voc, lexicon: lex, ngram: f("ngram"), meta: M3Meta.from(json: v.config),
+        return M3Spec(encoder: e, decoder: d, vocab: voc, lexicon: lex, ngram: f("ngram"), symspell: f("symspell"), meta: M3Meta.from(json: v.config),
                       params: M3Params.from(json: v.params))
     }
 }

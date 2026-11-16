@@ -1,0 +1,85 @@
+{
+ "id": "m3",
+ "type": "m3dict",
+ "label": "m3 62M int4 (Preview)",
+ "replaces": "block4",
+ "format": "onnx",
+ "base_urls": [
+  "https://huggingface.co/MostLime/keylime-m3-preview/resolve/main/"
+ ],
+ "files": {
+  "encoder": {
+   "file": "m3.encoder.int4.onnx",
+   "size": 23968360,
+   "sha256": "fe57a05e25ef38639ff0ae88930f5cd79004a7d7f5c8538515fb641a04a44085"
+  },
+  "decoder": {
+   "file": "m3.decoder.int4.onnx",
+   "size": 26871564,
+   "sha256": "05c2ba7c3b54bba2499522efc08a1d8cd02b2bf5d58cfa1662a029aeff89a1f8"
+  },
+  "vocab": {
+   "file": "vocab_m3.json",
+   "size": 695095,
+   "sha256": "f328549e080df02ab6a57e3ecf87dc8dd6470b286516ba00f67a86f383d1c77a"
+  },
+  "lexicon": {
+   "file": "m3_lexicon.tsv",
+   "size": 1212343,
+   "sha256": "a7437026bf5d89ed689e800174953c0872920b13a615627001ce38f354d54924"
+  },
+  "symspell": {
+   "file": "m3_symspell.bin",
+   "size": 26841264,
+   "sha256": "fb489db418bad113c02ad239c1c584e3cf2c3d77465639365345e3d4e8942386"
+  },
+  "ngram": {
+   "file": "m3_ngram.bin",
+   "size": 24097652,
+   "sha256": "0c2329ec0a7884d6a8a4a85899e27adf077bc5b3187c5d2e654be9cc5aa6665c"
+  }
+ },
+ "m3": {
+  "n_kv_heads": 2,
+  "head_dim": 64,
+  "conv_kernel": 7,
+  "d_model": 512,
+  "vocab_size": 32768,
+  "params": 61718400,
+  "style_ids": {
+   "casual": 256,
+   "standard": 257,
+   "formal": 258
+  },
+  "eos": 2,
+  "max_src": 384,
+  "max_tgt": 112
+ },
+ "decoder": {
+  "top_k": 8,
+  "tau_split": 4.0,
+  "plan_k": 8,
+  "rare_rank": 10000,
+  "lp_oov": -16.0,
+  "prior_w": 0.5,
+  "max_hits": 4000,
+  "qd3": 7,
+  "short": 2,
+  "bag_n": 300,
+  "bag_min": 6
+ },
+ "params": {
+  "k": 3,
+  "rare": 10000,
+  "lowconf": -1.0,
+  "a": 0.5,
+  "b": 0.5,
+  "d": 0.0,
+  "c_name": 2.0,
+  "c_real": 4.0,
+  "c_rare": 8.0,
+  "th_auto": -5.955550000000001,
+  "th_sugg": -8.14395
+ },
+ "supports_style": true
+}

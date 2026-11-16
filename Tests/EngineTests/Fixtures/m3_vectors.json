@@ -1,0 +1,6292 @@
+{
+ "params": {
+  "k": 3,
+  "rare": 10000,
+  "lowconf": -1.0,
+  "a": 0.5,
+  "b": 0.5,
+  "d": 0.0,
+  "c_name": 2.0,
+  "c_real": 4.0,
+  "c_rare": 8.0,
+  "th_auto": -5.955550000000001,
+  "th_sugg": -8.14395
+ },
+ "ngram": "m3_ngram.bin",
+ "note": "alts = [text, kind, dm3, spatial, log prior, ngram delta]",
+ "vectors": [
+  {
+   "input": "The evacuees included babies and young chldren.",
+   "style": "standard",
+   "constrained_greedy": "The evacuees included babies and young children.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "The evacuees included babies and young children.",
+   "auto": [
+    {
+     "typed": "chldren",
+     "to": "children",
+     "margin": 22.596
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "evacuees",
+     "greedy_word": "evacuees",
+     "nonword": false,
+     "name_like": false,
+     "j": 1,
+     "span": [
+      4,
+      12
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 98849,
+     "wlp": -0.0006,
+     "alts": [
+      [
+       "evacuees",
+       "copy",
+       0.0,
+       4.3425,
+       -16.6793,
+       0.0
+      ],
+      [
+       "devalues",
+       "word",
+       -21.0667,
+       -14.256,
+       -14.62,
+       1.5967
+      ],
+      [
+       "evacuate",
+       "word",
+       -16.2712,
+       -17.9488,
+       -13.4896,
+       1.7881
+      ],
+      [
+       "values",
+       "word",
+       -14.8009,
+       -20.1154,
+       -10.0572,
+       7.6826
+      ],
+      [
+       "beaches",
+       "word",
+       0.0,
+       -20.2372,
+       -11.5449,
+       8.5498
+      ],
+      [
+       "rescues",
+       "word",
+       0.0,
+       -19.5775,
+       -13.8091,
+       4.5605
+      ],
+      [
+       "escapees",
+       "word",
+       0.0,
+       -18.5653,
+       -15.8728,
+       0.9941
+      ],
+      [
+       "devalued",
+       "word",
+       0.0,
+       -19.7768,
+       -14.2214,
+       1.9736
+      ],
+      [
+       "legacies",
+       "word",
+       0.0,
+       -19.6434,
+       -14.491,
+       3.6865
+      ]
+     ]
+    },
+    {
+     "typed": "chldren",
+     "greedy_word": "children",
+     "nonword": true,
+     "name_like": false,
+     "j": 6,
+     "span": [
+      39,
+      47
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0,
+     "alts": [
+      [
+       "chldren",
+       "copy",
+       -18.3788,
+       3.7944,
+       -17.7201,
+       -13.0391
+      ],
+      [
+       "children",
+       "greedy",
+       0.0,
+       -0.8105,
+       -8.7128,
+       0.0
+      ],
+      [
+       "children's",
+       "word",
+       -17.739,
+       -6.3319,
+       -11.1577,
+       -5.1592
+      ],
+      [
+       "childrens",
+       "word",
+       -18.6203,
+       -5.4156,
+       -13.5702,
+       -10.3271
+      ],
+      [
+       "chlorine",
+       "word",
+       -20.2001,
+       -14.797,
+       -12.7173,
+       -9.833
+      ],
+      [
+       "chodron",
+       "word",
+       0.0,
+       -13.968,
+       -16.2093,
+       -13.8828
+      ],
+      [
+       "chaldean",
+       "word",
+       0.0,
+       -13.9881,
+       -16.2093,
+       -12.5664
+      ],
+      [
+       "chalten",
+       "word",
+       0.0,
+       -15.4058,
+       -16.0695,
+       -14.083
+      ],
+      [
+       "chosen",
+       "word",
+       0.0,
+       -20.3967,
+       -10.5732,
+       -8.6289
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Southern forces said they had shot down theee northern warplanes.",
+   "style": "standard",
+   "constrained_greedy": "Southern forces said they had shot down three northern warplanes.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Southern forces said they had shot down three northern warplanes.",
+   "auto": [
+    {
+     "typed": "theee",
+     "to": "three",
+     "margin": 5.667
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "theee",
+     "greedy_word": "three",
+     "nonword": true,
+     "name_like": false,
+     "j": 7,
+     "span": [
+      40,
+      45
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.3496,
+     "alts": [
+      [
+       "theee",
+       "copy",
+       -4.8669,
+       2.7226,
+       -17.7201,
+       -7.0918
+      ],
+      [
+       "three",
+       "greedy",
+       0.0,
+       -2.7687,
+       -8.2216,
+       0.0
+      ],
+      [
+       "there",
+       "word",
+       -3.4815,
+       -2.7688,
+       -5.8754,
+       1.0
+      ],
+      [
+       "thee",
+       "word",
+       -7.6851,
+       -1.6846,
+       -12.3454,
+       -4.6934
+      ],
+      [
+       "these",
+       "word",
+       -1.9272,
+       -5.5231,
+       -6.8875,
+       0.1367
+      ],
+      [
+       "the",
+       "word",
+       0.0,
+       -7.4718,
+       -3.1822,
+       4.8789
+      ],
+      [
+       "theme",
+       "word",
+       0.0,
+       -5.5409,
+       -10.026,
+       -3.4766
+      ],
+      [
+       "the're",
+       "word",
+       0.0,
+       -3.6908,
+       -15.771,
+       -7.0898
+      ],
+      [
+       "there's",
+       "word",
+       0.0,
+       -8.2567,
+       -7.2955,
+       -1.5439
+      ]
+     ]
+    },
+    {
+     "typed": "warplanes",
+     "greedy_word": "warplanes",
+     "nonword": false,
+     "name_like": false,
+     "j": 9,
+     "span": [
+      55,
+      64
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 76927,
+     "wlp": -0.0151,
+     "alts": [
+      [
+       "warplanes",
+       "copy",
+       0.0,
+       4.8785,
+       -16.1846,
+       0.0
+      ],
+      [
+       "airplanes",
+       "word",
+       -6.9332,
+       -8.8231,
+       -12.5317,
+       2.583
+      ],
+      [
+       "airplane's",
+       "word",
+       -17.1092,
+       -9.7394,
+       -16.1605,
+       -1.2773
+      ],
+      [
+       "aeroplanes",
+       "word",
+       -14.4205,
+       -10.347,
+       -15.5037,
+       0.5986
+      ],
+      [
+       "airplane",
+       "word",
+       0.0,
+       -19.2867,
+       -11.6525,
+       2.9736
+      ],
+      [
+       "earphones",
+       "word",
+       0.0,
+       -18.4298,
+       -13.4572,
+       1.8477
+      ],
+      [
+       "wargames",
+       "word",
+       0.0,
+       -19.2991,
+       -13.7934,
+       1.8115
+      ],
+      [
+       "marlantes",
+       "word",
+       0.0,
+       -19.0599,
+       -16.2606,
+       -2.501
+      ],
+      [
+       "aeroplane",
+       "word",
+       0.0,
+       -20.8106,
+       -14.5275,
+       0.749
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Many townspeople whp had heathere earlier on the main road.",
+   "style": "standard",
+   "constrained_greedy": "Many townspeople who had heathered earlier on the main road.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Many townspeople who had heathered earlier on the main road.",
+   "auto": [
+    {
+     "typed": "whp",
+     "to": "who",
+     "margin": 6.359
+    },
+    {
+     "typed": "heathere",
+     "to": "heathered",
+     "margin": 3.67
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "townspeople",
+     "greedy_word": "townspeople",
+     "nonword": false,
+     "name_like": false,
+     "j": 1,
+     "span": [
+      5,
+      16
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 45531,
+     "wlp": -0.0082,
+     "alts": [
+      [
+       "townspeople",
+       "copy",
+       0.0,
+       5.9626,
+       -15.0461,
+       0.0
+      ],
+      [
+       "transpeople",
+       "word",
+       -14.7365,
+       -11.7918,
+       -16.2872,
+       -0.293
+      ],
+      [
+       "salespeople",
+       "word",
+       -18.4994,
+       -29.2947,
+       -13.7889,
+       5.5479
+      ],
+      [
+       "downslope",
+       "word",
+       -37.4148,
+       -32.0072,
+       -16.6401,
+       -0.9668
+      ],
+      [
+       "tensorflow",
+       "word",
+       0.0,
+       -46.0125,
+       -15.8908,
+       0.0273
+      ],
+      [
+       "powersupply",
+       "word",
+       0.0,
+       -47.3295,
+       -14.7334,
+       0.2822
+      ],
+      [
+       "tocopherols",
+       "word",
+       0.0,
+       -47.1536,
+       -15.8038,
+       -0.2559
+      ],
+      [
+       "contemplate",
+       "word",
+       0.0,
+       -50.1212,
+       -12.9638,
+       1.1104
+      ],
+      [
+       "troposphere",
+       "word",
+       0.0,
+       -48.6338,
+       -15.9861,
+       -1.127
+      ]
+     ]
+    },
+    {
+     "typed": "whp",
+     "greedy_word": "who",
+     "nonword": false,
+     "name_like": false,
+     "j": 2,
+     "span": [
+      17,
+      20
+     ],
+     "changed": true,
+     "rare": true,
+     "rank": 89427,
+     "wlp": -0.0004,
+     "alts": [
+      [
+       "whp",
+       "copy",
+       -8.4673,
+       1.6262,
+       -16.497,
+       -9.3037
+      ],
+      [
+       "who",
+       "greedy",
+       0.0,
+       -3.8948,
+       -6.387,
+       0.0
+      ],
+      [
+       "whip",
+       "word",
+       -11.5461,
+       -2.9787,
+       -12.0223,
+       -6.0615
+      ],
+      [
+       "why",
+       "word",
+       -13.3363,
+       -7.2727,
+       -6.7104,
+       -3.3799
+      ],
+      [
+       "whup",
+       "word",
+       -20.1635,
+       -2.9787,
+       -16.137,
+       -8.8809
+      ],
+      [
+       "php",
+       "word",
+       0.0,
+       -7.2727,
+       -11.2524,
+       -5.418
+      ],
+      [
+       "ohp",
+       "word",
+       0.0,
+       -7.2727,
+       -11.9505,
+       -6.0986
+      ],
+      [
+       "whom",
+       "word",
+       0.0,
+       -8.4665,
+       -10.4535,
+       -2.9121
+      ],
+      [
+       "what",
+       "word",
+       0.0,
+       -11.1857,
+       -5.5394,
+       -2.7305
+      ]
+     ]
+    },
+    {
+     "typed": "heathere",
+     "greedy_word": "heathered",
+     "nonword": true,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      25,
+      34
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.871,
+     "alts": [
+      [
+       "heathere",
+       "copy",
+       -5.5575,
+       4.3364,
+       -17.7201,
+       -0.8301
+      ],
+      [
+       "heathered",
+       "greedy",
+       0.0,
+       -0.2686,
+       -15.9663,
+       0.0
+      ],
+      [
+       "heather",
+       "word",
+       -5.1065,
+       -5.5178,
+       -12.9677,
+       1.9863
+      ],
+      [
+       "heathers",
+       "word",
+       -1.5186,
+       -4.5272,
+       -15.771,
+       -0.0557
+      ],
+      [
+       "heather's",
+       "word",
+       -7.4592,
+       -5.4416,
+       -16.4324,
+       -0.4834
+      ],
+      [
+       "weathered",
+       "word",
+       0.0,
+       -9.1674,
+       -13.7017,
+       1.3291
+      ],
+      [
+       "feathered",
+       "word",
+       0.0,
+       -9.1675,
+       -14.2492,
+       1.1172
+      ],
+      [
+       "heathcare",
+       "word",
+       0.0,
+       -8.4731,
+       -16.497,
+       -0.627
+      ],
+      [
+       "healthier",
+       "word",
+       0.0,
+       -13.785,
+       -10.9889,
+       2.2275
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "The Japanese justice ministry refused Marsdins a Visa.",
+   "style": "standard",
+   "constrained_greedy": "The Japanese justice ministry refused Mars and Visa.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "The Japanese justice ministry refused Marsdins and Visa.",
+   "auto": [
+    {
+     "typed": "a",
+     "to": "and",
+     "margin": 1.955
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Marsdins",
+     "greedy_word": "Mars",
+     "nonword": true,
+     "name_like": true,
+     "j": 5,
+     "span": [
+      38,
+      42
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.1507,
+     "alts": [
+      [
+       "Marsdins",
+       "copy",
+       -3.3478,
+       4.3364,
+       -17.7201,
+       -5.5898
+      ],
+      [
+       "Mars",
+       "greedy",
+       0.0,
+       -31.5432,
+       -9.9902,
+       0.0
+      ],
+      [
+       "Margins",
+       "word",
+       -7.9305,
+       -14.3203,
+       -12.1411,
+       0.1279
+      ],
+      [
+       "Marlins",
+       "word",
+       -14.5266,
+       -14.3203,
+       -14.4821,
+       -4.8193
+      ],
+      [
+       "Martins",
+       "word",
+       -6.4073,
+       -14.3203,
+       -14.5369,
+       -4.373
+      ],
+      [
+       "Martin's",
+       "word",
+       0.0,
+       -15.2365,
+       -13.1389,
+       -3.3809
+      ],
+      [
+       "Marsden",
+       "word",
+       0.0,
+       -15.0207,
+       -15.3338,
+       -4.9385
+      ],
+      [
+       "Mansions",
+       "word",
+       0.0,
+       -17.7376,
+       -13.1901,
+       0.2275
+      ],
+      [
+       "Martians",
+       "word",
+       0.0,
+       -18.0321,
+       -13.9847,
+       -1.1064
+      ],
+      [
+       "Markings",
+       "word",
+       0.0,
+       -18.9248,
+       -13.2557,
+       0.0176
+      ]
+     ]
+    },
+    {
+     "typed": "a",
+     "greedy_word": "and",
+     "nonword": false,
+     "name_like": false,
+     "j": 6,
+     "span": [
+      43,
+      46
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": 2,
+     "wlp": -0.7584,
+     "alts": [
+      [
+       "a",
+       "copy",
+       -10.6866,
+       0.5421,
+       -3.684,
+       0.2529
+      ],
+      [
+       "and",
+       "greedy",
+       0.0,
+       -8.668,
+       -3.7618,
+       0.0
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "I may take the oppurtunity to run some errands.",
+   "style": "standard",
+   "constrained_greedy": "I may take the opportunity to run some errands.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "I may take the opportunity to run some errands.",
+   "auto": [
+    {
+     "typed": "oppurtunity",
+     "to": "opportunity",
+     "margin": -2.361
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "oppurtunity",
+     "greedy_word": "opportunity",
+     "nonword": false,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      15,
+      26
+     ],
+     "changed": true,
+     "rare": true,
+     "rank": 52506,
+     "wlp": -0.1628,
+     "alts": [
+      [
+       "oppurtunity",
+       "copy",
+       -1.8649,
+       5.9687,
+       -15.3549,
+       -8.4473
+      ],
+      [
+       "opportunity",
+       "greedy",
+       0.0,
+       -2.93,
+       -9.5152,
+       0.0
+      ],
+      [
+       "oppertunity",
+       "word",
+       -14.1673,
+       -2.93,
+       -16.027,
+       -14.2705
+      ],
+      [
+       "oppurtunities",
+       "word",
+       -27.3169,
+       -11.0386,
+       -16.3146,
+       -18.0566
+      ],
+      [
+       "opportunist",
+       "word",
+       -12.9639,
+       -16.1123,
+       -14.6252,
+       -13.6143
+      ],
+      [
+       "opportunists",
+       "word",
+       0.0,
+       -16.4221,
+       -15.3984,
+       -17.5576
+      ],
+      [
+       "opportunities",
+       "word",
+       0.0,
+       -19.9373,
+       -10.363,
+       -8.4238
+      ],
+      [
+       "opportunism",
+       "word",
+       0.0,
+       -20.7177,
+       -15.9279,
+       -18.0566
+      ],
+      [
+       "popularity",
+       "word",
+       0.0,
+       -34.7385,
+       -11.2461,
+       -11.5068
+      ]
+     ]
+    },
+    {
+     "typed": "errands",
+     "greedy_word": "errands",
+     "nonword": false,
+     "name_like": false,
+     "j": 8,
+     "span": [
+      39,
+      46
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 13016,
+     "wlp": -0.0006,
+     "alts": [
+      [
+       "errands",
+       "copy",
+       0.0,
+       3.8005,
+       -12.644,
+       0.0
+      ],
+      [
+       "errand",
+       "word",
+       -8.6122,
+       -6.0589,
+       -13.9793,
+       -12.4082
+      ],
+      [
+       "rebrands",
+       "word",
+       -17.2075,
+       -5.8914,
+       -16.566,
+       -13.6582
+      ],
+      [
+       "brands",
+       "word",
+       -12.7682,
+       -10.1869,
+       -10.403,
+       -6.5898
+      ],
+      [
+       "strands",
+       "word",
+       0.0,
+       -10.5561,
+       -12.7211,
+       -8.6406
+      ],
+      [
+       "serranos",
+       "word",
+       0.0,
+       -9.7016,
+       -16.027,
+       -13.4072
+      ],
+      [
+       "brand's",
+       "word",
+       0.0,
+       -11.1032,
+       -13.9449,
+       -12.5068
+      ],
+      [
+       "grands",
+       "word",
+       0.0,
+       -10.1869,
+       -15.9279,
+       -13.3154
+      ],
+      [
+       "terrans",
+       "word",
+       0.0,
+       -10.6481,
+       -15.5037,
+       -13.0176
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "check github.com/foo_bar and email me at bob@x.io im late",
+   "style": "standard",
+   "constrained_greedy": "check github.com/foo_bar and email me at bob@x.io I'm late",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "check github.com/foo_bar and email me at bob@x.io I'm late",
+   "auto": [
+    {
+     "typed": "im",
+     "to": "I'm",
+     "margin": 11.43
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "im",
+     "greedy_word": "I'm",
+     "nonword": true,
+     "name_like": false,
+     "j": 12,
+     "span": [
+      50,
+      53
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0395,
+     "alts": [
+      [
+       "Im",
+       "copy",
+       -11.2175,
+       1.0841,
+       -17.7201,
+       -1.3418
+      ],
+      [
+       "I'm",
+       "greedy",
+       0.0,
+       0.1678,
+       -5.6666,
+       0.0
+      ],
+      [
+       "In",
+       "word",
+       -13.1882,
+       -4.4369,
+       -4.307,
+       3.8213
+      ],
+      [
+       "Him",
+       "word",
+       -16.2741,
+       -3.5209,
+       -7.0691,
+       -1.9639
+      ],
+      [
+       "Imo",
+       "word",
+       -22.2732,
+       -3.5209,
+       -9.6804,
+       -3.9248
+      ],
+      [
+       "Aim",
+       "word",
+       0.0,
+       -3.5209,
+       -10.6384,
+       -5.5312
+      ],
+      [
+       "Jim",
+       "word",
+       0.0,
+       -3.5209,
+       -10.7243,
+       -4.8271
+      ],
+      [
+       "Tim",
+       "word",
+       0.0,
+       -3.5209,
+       -11.0043,
+       -5.0566
+      ],
+      [
+       "Kim",
+       "word",
+       0.0,
+       -3.5209,
+       -11.5193,
+       -5.3359
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Two-Thirds of our tickets have been sold.",
+   "style": "standard",
+   "constrained_greedy": "Two-Thirds of our tickets have been sold.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Two-Thirds of our tickets have been sold.",
+   "auto": [],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Thirds",
+     "greedy_word": "Thirds",
+     "nonword": false,
+     "name_like": true,
+     "j": 1,
+     "span": [
+      4,
+      10
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 13374,
+     "wlp": -0.01,
+     "alts": [
+      [
+       "Thirds",
+       "copy",
+       0.0,
+       3.2523,
+       -12.6896,
+       0.0
+      ],
+      [
+       "Third",
+       "word",
+       -5.196,
+       -6.6071,
+       -9.0802,
+       -5.9639
+      ],
+      [
+       "Thirded",
+       "word",
+       -15.7157,
+       -6.8387,
+       -14.9423,
+       -16.2031
+      ],
+      [
+       "Thiefs",
+       "word",
+       -14.2088,
+       -7.7896,
+       -15.8206,
+       -14.9033
+      ],
+      [
+       "Thirdly",
+       "word",
+       0.0,
+       -9.5587,
+       -13.3924,
+       -15.751
+      ],
+      [
+       "Thief's",
+       "word",
+       0.0,
+       -8.7058,
+       -15.1797,
+       -14.7148
+      ],
+      [
+       "Thirst",
+       "word",
+       0.0,
+       -9.9254,
+       -12.7981,
+       -13.2969
+      ],
+      [
+       "Theirs",
+       "word",
+       0.0,
+       -11.189,
+       -11.2573,
+       -12.4658
+      ],
+      [
+       "Tshirts",
+       "word",
+       0.0,
+       -10.2496,
+       -13.4135,
+       -13.5273
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "i just finished faxing everything.",
+   "style": "standard",
+   "constrained_greedy": "I just finished fixing everything.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "I just finished fixing everything.",
+   "auto": [
+    {
+     "typed": "faxing",
+     "to": "fixing",
+     "margin": -4.563
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "faxing",
+     "greedy_word": "fixing",
+     "nonword": false,
+     "name_like": false,
+     "j": 3,
+     "span": [
+      16,
+      22
+     ],
+     "changed": true,
+     "rare": true,
+     "rank": 61885,
+     "wlp": -0.3721,
+     "alts": [
+      [
+       "faxing",
+       "copy",
+       -1.0365,
+       3.2523,
+       -15.7085,
+       -5.7002
+      ],
+      [
+       "fixing",
+       "greedy",
+       0.0,
+       -5.6465,
+       -11.0616,
+       0.0
+      ],
+      [
+       "facing",
+       "word",
+       -3.1471,
+       -2.2687,
+       -10.5816,
+       -2.8252
+      ],
+      [
+       "fading",
+       "word",
+       -6.5823,
+       -5.5184,
+       -12.2848,
+       -3.8193
+      ],
+      [
+       "taxing",
+       "word",
+       -6.5703,
+       -5.613,
+       -12.3433,
+       -3.9922
+      ],
+      [
+       "faking",
+       "word",
+       0.0,
+       -5.6465,
+       -12.5963,
+       -4.3643
+      ],
+      [
+       "maxing",
+       "word",
+       0.0,
+       -5.6466,
+       -12.6539,
+       -4.9004
+      ],
+      [
+       "waxing",
+       "word",
+       0.0,
+       -5.6466,
+       -13.1731,
+       -4.2266
+      ],
+      [
+       "faring",
+       "word",
+       0.0,
+       -5.6465,
+       -14.1205,
+       -5.7236
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "I spoke with Lara Robinson this morning.",
+   "style": "standard",
+   "constrained_greedy": "I spoke with Lara Robinson this morning.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "I spoke with Lara Robinson this morning.",
+   "auto": [],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Lara",
+     "greedy_word": "Lara",
+     "nonword": false,
+     "name_like": true,
+     "j": 3,
+     "span": [
+      13,
+      17
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 25844,
+     "wlp": -0.1392,
+     "alts": [
+      [
+       "Lara",
+       "copy",
+       0.0,
+       2.1682,
+       -13.8771,
+       0.0
+      ],
+      [
+       "Laura",
+       "word",
+       -2.8703,
+       -2.4367,
+       -12.2324,
+       3.3262
+      ],
+      [
+       "Clara",
+       "word",
+       -2.9371,
+       -2.4368,
+       -13.4044,
+       2.6934
+      ],
+      [
+       "Larva",
+       "word",
+       -12.0134,
+       -2.4367,
+       -14.3687,
+       -0.4531
+      ],
+      [
+       "Liara",
+       "word",
+       0.0,
+       -2.4367,
+       -15.0698,
+       2.6396
+      ],
+      [
+       "Kara",
+       "word",
+       0.0,
+       -3.3528,
+       -13.8967,
+       -0.0098
+      ],
+      [
+       "Lars",
+       "word",
+       0.0,
+       -3.3528,
+       -14.0431,
+       -0.3936
+      ],
+      [
+       "Klara",
+       "word",
+       0.0,
+       -2.433,
+       -16.1846,
+       -1.5518
+      ],
+      [
+       "Elara",
+       "word",
+       0.0,
+       -2.4368,
+       -16.2346,
+       -1.627
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Reserve Heap on your roster this week.",
+   "style": "standard",
+   "constrained_greedy": "Reserve Heap on your roster this week.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Reserve Heap on your roster this week.",
+   "auto": [],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Heap",
+     "greedy_word": "Heap",
+     "nonword": false,
+     "name_like": true,
+     "j": 1,
+     "span": [
+      8,
+      12
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 11480,
+     "wlp": -0.0096,
+     "alts": [
+      [
+       "Heap",
+       "copy",
+       0.0,
+       2.1682,
+       -12.4308,
+       0.0
+      ],
+      [
+       "Cheap",
+       "word",
+       -6.7271,
+       -2.4368,
+       -8.7428,
+       0.1787
+      ],
+      [
+       "Heaps",
+       "word",
+       -10.3849,
+       -2.4368,
+       -12.7007,
+       -2.5146
+      ],
+      [
+       "Hepa",
+       "word",
+       -12.4497,
+       -2.9478,
+       -14.5949,
+       -3.9014
+      ],
+      [
+       "Help",
+       "word",
+       0.0,
+       -6.7306,
+       -7.173,
+       3.0107
+      ],
+      [
+       "Head",
+       "word",
+       0.0,
+       -6.7307,
+       -8.2508,
+       5.2666
+      ],
+      [
+       "Hear",
+       "word",
+       0.0,
+       -6.7307,
+       -8.4042,
+       -0.3857
+      ],
+      [
+       "Heat",
+       "word",
+       0.0,
+       -6.7307,
+       -9.209,
+       2.8379
+      ],
+      [
+       "Heal",
+       "word",
+       0.0,
+       -6.6971,
+       -11.1423,
+       0.0107
+      ]
+     ]
+    },
+    {
+     "typed": "roster",
+     "greedy_word": "roster",
+     "nonword": false,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      21,
+      27
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 12869,
+     "wlp": -0.0017,
+     "alts": [
+      [
+       "roster",
+       "copy",
+       0.0,
+       3.2523,
+       -12.6258,
+       0.0
+      ],
+      [
+       "rooster",
+       "word",
+       -8.816,
+       -0.6596,
+       -13.549,
+       -3.1582
+      ],
+      [
+       "rosters",
+       "word",
+       -10.031,
+       -1.3527,
+       -14.7683,
+       -3.499
+      ],
+      [
+       "roaster",
+       "word",
+       -9.6257,
+       -1.3487,
+       -15.0619,
+       -4.083
+      ],
+      [
+       "poster",
+       "word",
+       0.0,
+       -5.6465,
+       -10.8241,
+       0.2861
+      ],
+      [
+       "foster",
+       "word",
+       0.0,
+       -5.613,
+       -11.5074,
+       -0.0293
+      ],
+      [
+       "router",
+       "word",
+       0.0,
+       -5.6465,
+       -11.5466,
+       4.3467
+      ],
+      [
+       "roosters",
+       "word",
+       0.0,
+       -5.2646,
+       -14.9009,
+       -3.9131
+      ],
+      [
+       "toaster",
+       "word",
+       0.0,
+       -6.8695,
+       -12.2687,
+       0.9326
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "dont worry ill be there in a minuite",
+   "style": "standard",
+   "constrained_greedy": "Don't worry I'll be there in a minute",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Don't worry I'll be there in a minute",
+   "auto": [
+    {
+     "typed": "dont",
+     "to": "Don't",
+     "margin": 18.792
+    },
+    {
+     "typed": "ill",
+     "to": "I'll",
+     "margin": 13.381
+    },
+    {
+     "typed": "minuite",
+     "to": "minute",
+     "margin": 6.1
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "dont",
+     "greedy_word": "Don't",
+     "nonword": true,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      5
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.2804,
+     "alts": [
+      [
+       "Dont",
+       "copy",
+       -14.6879,
+       2.1682,
+       -17.7201,
+       -9.124
+      ],
+      [
+       "Don't",
+       "greedy",
+       0.0,
+       1.2519,
+       -5.7526,
+       0.0
+      ],
+      [
+       "Donut",
+       "word",
+       -19.3822,
+       -2.4367,
+       -12.9512,
+       -21.0039
+      ],
+      [
+       "Font",
+       "word",
+       -18.0826,
+       -3.3528,
+       -11.715,
+       -20.4238
+      ],
+      [
+       "Dosnt",
+       "word",
+       -27.94,
+       -2.4367,
+       -15.293,
+       -24.7754
+      ],
+      [
+       "Donte",
+       "word",
+       0.0,
+       -2.4368,
+       -16.2093,
+       -21.9883
+      ],
+      [
+       "Done",
+       "word",
+       0.0,
+       -6.7307,
+       -7.6714,
+       -18.2168
+      ],
+      [
+       "Dint",
+       "word",
+       0.0,
+       -3.3528,
+       -14.5703,
+       -24.9561
+      ],
+      [
+       "Don'ts",
+       "word",
+       0.0,
+       -3.3531,
+       -14.6407,
+       -25.1768
+      ]
+     ]
+    },
+    {
+     "typed": "ill",
+     "greedy_word": "I'll",
+     "nonword": false,
+     "name_like": false,
+     "j": 2,
+     "span": [
+      12,
+      16
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": 2275,
+     "wlp": -0.2896,
+     "alts": [
+      [
+       "Ill",
+       "copy",
+       -11.9447,
+       1.6323,
+       -10.1482,
+       -11.7891
+      ],
+      [
+       "I'll",
+       "greedy",
+       0.0,
+       0.716,
+       -7.3784,
+       0.0
+      ]
+     ]
+    },
+    {
+     "typed": "minuite",
+     "greedy_word": "minute",
+     "nonword": true,
+     "name_like": false,
+     "j": 7,
+     "span": [
+      31,
+      37
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.004,
+     "alts": [
+      [
+       "minuite",
+       "copy",
+       -6.3222,
+       3.7944,
+       -17.7201,
+       -9.3984
+      ],
+      [
+       "minute",
+       "greedy",
+       0.0,
+       -6.0491,
+       -9.4323,
+       0.0
+      ],
+      [
+       "minutiae",
+       "word",
+       -19.8931,
+       -5.9042,
+       -14.2669,
+       -10.8203
+      ],
+      [
+       "minutes",
+       "word",
+       -11.3609,
+       -10.6537,
+       -8.5162,
+       -7.0195
+      ],
+      [
+       "minutia",
+       "word",
+       -19.8125,
+       -10.2203,
+       -14.7507,
+       -11.001
+      ],
+      [
+       "minutae",
+       "word",
+       0.0,
+       -9.7097,
+       -16.6793,
+       -12.4629
+      ],
+      [
+       "miniitx",
+       "word",
+       0.0,
+       -10.6193,
+       -16.2093,
+       -12.2119
+      ],
+      [
+       "ninite",
+       "word",
+       0.0,
+       -11.5699,
+       -14.6511,
+       -10.9883
+      ],
+      [
+       "minute's",
+       "word",
+       0.0,
+       -11.5702,
+       -15.4438,
+       -7.2002
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Thsi is teh best plce in toen",
+   "style": "standard",
+   "constrained_greedy": "This is the best place in town",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "This is the best place in town",
+   "auto": [
+    {
+     "typed": "Thsi",
+     "to": "This",
+     "margin": 16.631
+    },
+    {
+     "typed": "teh",
+     "to": "the",
+     "margin": 19.925
+    },
+    {
+     "typed": "plce",
+     "to": "place",
+     "margin": 18.79
+    },
+    {
+     "typed": "toen",
+     "to": "town",
+     "margin": 9.403
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Thsi",
+     "greedy_word": "This",
+     "nonword": true,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      4
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0012,
+     "alts": [
+      [
+       "Thsi",
+       "copy",
+       -8.5062,
+       2.1682,
+       -17.7201,
+       -21.3652
+      ],
+      [
+       "This",
+       "greedy",
+       0.0,
+       -2.9478,
+       -4.9979,
+       0.0
+      ],
+      [
+       "Thai",
+       "word",
+       -11.3731,
+       -3.3528,
+       -11.7045,
+       -13.54
+      ],
+      [
+       "Thesis",
+       "word",
+       -10.8878,
+       -7.0357,
+       -11.4232,
+       -11.7129
+      ],
+      [
+       "Thus",
+       "word",
+       -12.9932,
+       -8.4564,
+       -9.3573,
+       -8.2285
+      ],
+      [
+       "Thst",
+       "word",
+       0.0,
+       -6.7307,
+       -14.7052,
+       -19.502
+      ],
+      [
+       "That",
+       "word",
+       0.0,
+       -12.2513,
+       -4.276,
+       -1.9189
+      ],
+      [
+       "Their",
+       "word",
+       0.0,
+       -11.2962,
+       -6.2312,
+       -8.9424
+      ],
+      [
+       "Those",
+       "word",
+       0.0,
+       -11.1735,
+       -6.8786,
+       -9.877
+      ]
+     ]
+    },
+    {
+     "typed": "teh",
+     "greedy_word": "the",
+     "nonword": true,
+     "name_like": false,
+     "j": 2,
+     "span": [
+      8,
+      11
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0001,
+     "alts": [
+      [
+       "teh",
+       "copy",
+       -13.1533,
+       1.6262,
+       -17.7201,
+       -18.6602
+      ],
+      [
+       "the",
+       "greedy",
+       0.0,
+       -3.4899,
+       -3.1822,
+       0.0
+      ],
+      [
+       "tech",
+       "word",
+       -15.6209,
+       -2.9787,
+       -9.6816,
+       -19.1816
+      ],
+      [
+       "yeh",
+       "word",
+       -15.2871,
+       -3.8948,
+       -12.8106,
+       -22.9375
+      ],
+      [
+       "eth",
+       "word",
+       -19.706,
+       -3.4899,
+       -13.8651,
+       -23.1406
+      ],
+      [
+       "they",
+       "word",
+       0.0,
+       -8.0718,
+       -5.3906,
+       -15.7812
+      ],
+      [
+       "them",
+       "word",
+       0.0,
+       -8.0726,
+       -6.0394,
+       -14.1738
+      ],
+      [
+       "teah",
+       "word",
+       0.0,
+       -2.9787,
+       -16.2606,
+       -24.5957
+      ],
+      [
+       "then",
+       "word",
+       0.0,
+       -8.0726,
+       -6.2765,
+       -14.9688
+      ]
+     ]
+    },
+    {
+     "typed": "plce",
+     "greedy_word": "place",
+     "nonword": true,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      17,
+      22
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0002,
+     "alts": [
+      [
+       "plce",
+       "copy",
+       -14.9391,
+       2.1682,
+       -17.7201,
+       -12.3076
+      ],
+      [
+       "place",
+       "greedy",
+       0.0,
+       -2.4367,
+       -7.6336,
+       0.0
+      ],
+      [
+       "places",
+       "word",
+       -10.3481,
+       -7.0417,
+       -8.8148,
+       -0.0049
+      ],
+      [
+       "police",
+       "word",
+       -14.4505,
+       -7.0377,
+       -9.2537,
+       -10.4883
+      ],
+      [
+       "pace",
+       "word",
+       -15.3871,
+       -6.7306,
+       -10.6343,
+       -10.9395
+      ],
+      [
+       "placed",
+       "word",
+       0.0,
+       -7.0417,
+       -10.3839,
+       -8.291
+      ],
+      [
+       "palace",
+       "word",
+       0.0,
+       -7.0416,
+       -11.8108,
+       -11.0996
+      ],
+      [
+       "splice",
+       "word",
+       0.0,
+       -7.0417,
+       -13.8023,
+       -12.0264
+      ],
+      [
+       "pice",
+       "word",
+       0.0,
+       -6.7306,
+       -16.114,
+       -16.9766
+      ]
+     ]
+    },
+    {
+     "typed": "toen",
+     "greedy_word": "town",
+     "nonword": true,
+     "name_like": false,
+     "j": 6,
+     "span": [
+      26,
+      30
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.1223,
+     "alts": [
+      [
+       "toen",
+       "copy",
+       -6.9096,
+       2.1682,
+       -17.7201,
+       -10.5078
+      ],
+      [
+       "town",
+       "greedy",
+       0.0,
+       -3.3528,
+       -9.2201,
+       0.0
+      ],
+      [
+       "tone",
+       "word",
+       -3.2605,
+       -2.9478,
+       -10.202,
+       -4.6504
+      ],
+      [
+       "token",
+       "word",
+       -3.3904,
+       -2.4367,
+       -11.9766,
+       -8.9229
+      ],
+      [
+       "torn",
+       "word",
+       -11.4443,
+       -3.3528,
+       -11.5054,
+       -8.8467
+      ],
+      [
+       "then",
+       "word",
+       0.0,
+       -6.7306,
+       -6.2765,
+       -3.6553
+      ],
+      [
+       "toren",
+       "word",
+       0.0,
+       -2.4328,
+       -16.1605,
+       -11.9775
+      ],
+      [
+       "tien",
+       "word",
+       0.0,
+       -3.3528,
+       -15.283,
+       -11.4395
+      ],
+      [
+       "roen",
+       "word",
+       0.0,
+       -3.3528,
+       -16.2346,
+       -12.2051
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "The Pathons place is open",
+   "style": "standard",
+   "constrained_greedy": "The Pathons place is open",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "The Pathons place is open",
+   "auto": [],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Pathons",
+     "greedy_word": "Pathons",
+     "nonword": true,
+     "name_like": true,
+     "j": 1,
+     "span": [
+      4,
+      11
+     ],
+     "changed": false,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.1592,
+     "alts": [
+      [
+       "Pathons",
+       "copy",
+       0.0,
+       3.7944,
+       -17.7201,
+       0.0
+      ],
+      [
+       "Patrons",
+       "word",
+       -7.3013,
+       -5.1044,
+       -12.7998,
+       1.9385
+      ],
+      [
+       "Pathogens",
+       "word",
+       -11.1776,
+       -5.4154,
+       -13.1389,
+       1.6113
+      ],
+      [
+       "Pythons",
+       "word",
+       -8.3109,
+       -5.1044,
+       -15.2068,
+       -2.3232
+      ],
+      [
+       "Python's",
+       "word",
+       0.0,
+       -6.0207,
+       -14.084,
+       -1.7568
+      ],
+      [
+       "Pantheons",
+       "word",
+       0.0,
+       -5.4154,
+       -15.4095,
+       -2.4531
+      ],
+      [
+       "Patton's",
+       "word",
+       0.0,
+       -6.0126,
+       -15.4555,
+       -2.6338
+      ],
+      [
+       "Pathos",
+       "word",
+       0.0,
+       -6.6414,
+       -14.4776,
+       0.6631
+      ],
+      [
+       "Patron's",
+       "word",
+       0.0,
+       -6.0207,
+       -16.497,
+       -3.3672
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "we shoudl meet at 3pm on Fridya",
+   "style": "standard",
+   "constrained_greedy": "we should meet at 3pm on Friday",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "we should meet at 3pm on Friday",
+   "auto": [
+    {
+     "typed": "shoudl",
+     "to": "should",
+     "margin": 18.398
+    },
+    {
+     "typed": "Fridya",
+     "to": "Friday",
+     "margin": 6.077
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "shoudl",
+     "greedy_word": "should",
+     "nonword": true,
+     "name_like": false,
+     "j": 1,
+     "span": [
+      3,
+      9
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0,
+     "alts": [
+      [
+       "shoudl",
+       "copy",
+       -12.0039,
+       3.2523,
+       -17.7201,
+       -17.9033
+      ],
+      [
+       "should",
+       "greedy",
+       0.0,
+       -1.8637,
+       -6.701,
+       0.0
+      ],
+      [
+       "shoulda",
+       "word",
+       -14.5356,
+       -6.4464,
+       -13.3024,
+       -16.3408
+      ],
+      [
+       "shoulds",
+       "word",
+       -17.4007,
+       -6.4464,
+       -15.9279,
+       -17.6992
+      ],
+      [
+       "shouldn",
+       "word",
+       -32.1561,
+       -6.4464,
+       -16.0915,
+       -19.293
+      ],
+      [
+       "shoud",
+       "word",
+       0.0,
+       -7.2123,
+       -15.7085,
+       -17.502
+      ],
+      [
+       "shoul",
+       "word",
+       0.0,
+       -7.1834,
+       -16.3718,
+       -17.9922
+      ],
+      [
+       "should't",
+       "word",
+       0.0,
+       -7.3627,
+       -16.048,
+       -18.1787
+      ],
+      [
+       "shouldn't",
+       "word",
+       0.0,
+       -11.9459,
+       -8.87,
+       -6.8262
+      ]
+     ]
+    },
+    {
+     "typed": "Fridya",
+     "greedy_word": "Friday",
+     "nonword": true,
+     "name_like": true,
+     "j": 6,
+     "span": [
+      25,
+      31
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.023,
+     "alts": [
+      [
+       "Fridya",
+       "copy",
+       -3.778,
+       3.2523,
+       -17.7201,
+       -13.7148
+      ],
+      [
+       "Friday",
+       "greedy",
+       0.0,
+       -1.8637,
+       -10.1061,
+       0.0
+      ],
+      [
+       "Fridays",
+       "word",
+       -10.5647,
+       -5.9578,
+       -12.9904,
+       -6.8604
+      ],
+      [
+       "Friday's",
+       "word",
+       -11.2527,
+       -6.874,
+       -13.9712,
+       -9.2178
+      ],
+      [
+       "Frida",
+       "word",
+       -9.2652,
+       -7.1834,
+       -15.2253,
+       -13.7402
+      ],
+      [
+       "Fridman",
+       "word",
+       0.0,
+       -10.2454,
+       -15.6787,
+       -15.9033
+      ],
+      [
+       "Frieda",
+       "word",
+       0.0,
+       -10.4421,
+       -16.137,
+       -14.7539
+      ],
+      [
+       "Fridge",
+       "word",
+       0.0,
+       -14.5022,
+       -10.5623,
+       -11.416
+      ],
+      [
+       "Fraidy",
+       "word",
+       0.0,
+       -11.8172,
+       -16.0695,
+       -14.4248
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "lol idk what ur talking abt tbh",
+   "style": "standard",
+   "constrained_greedy": "lol idk what ur talking abt tbh",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "lol idk what ur talking abt tbh",
+   "auto": [],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "abt",
+     "greedy_word": "abt",
+     "nonword": false,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      24,
+      27
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 30562,
+     "wlp": -0.0343,
+     "alts": [
+      [
+       "abt",
+       "copy",
+       0.0,
+       1.6262,
+       -14.2078,
+       0.0
+      ],
+      [
+       "bat",
+       "word",
+       -12.1239,
+       -3.4899,
+       -11.2057,
+       -4.2881
+      ],
+      [
+       "ant",
+       "word",
+       -12.1141,
+       -3.8948,
+       -12.0477,
+       -4.3311
+      ],
+      [
+       "abit",
+       "word",
+       -10.3579,
+       -2.9787,
+       -14.1143,
+       -5.5957
+      ],
+      [
+       "abut",
+       "word",
+       0.0,
+       -2.9787,
+       -14.6724,
+       -5.873
+      ],
+      [
+       "about",
+       "word",
+       0.0,
+       -7.5836,
+       -5.5982,
+       5.9863
+      ],
+      [
+       "abet",
+       "word",
+       0.0,
+       -2.9787,
+       -15.7238,
+       -6.9912
+      ],
+      [
+       "abtf",
+       "word",
+       0.0,
+       -2.9789,
+       -16.137,
+       -7.1953
+      ],
+      [
+       "abot",
+       "word",
+       0.0,
+       -2.9787,
+       -16.2346,
+       -6.9307
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "im gonna be late dont wait up",
+   "style": "standard",
+   "constrained_greedy": "I'm gonna be late, don't wait up",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "I'm gonna be late, don't wait up",
+   "auto": [
+    {
+     "typed": "im",
+     "to": "I'm",
+     "margin": 13.219
+    },
+    {
+     "typed": "dont",
+     "to": "don't",
+     "margin": 10.758
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "im",
+     "greedy_word": "I'm",
+     "nonword": true,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      3
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0005,
+     "alts": [
+      [
+       "Im",
+       "copy",
+       -12.6566,
+       1.0841,
+       -17.7201,
+       -2.042
+      ],
+      [
+       "I'm",
+       "greedy",
+       0.0,
+       0.1678,
+       -5.6666,
+       0.0
+      ],
+      [
+       "In",
+       "word",
+       -12.4028,
+       -4.4369,
+       -4.307,
+       -10.3457
+      ],
+      [
+       "Him",
+       "word",
+       -13.4653,
+       -3.5209,
+       -7.0691,
+       -13.4453
+      ],
+      [
+       "Imo",
+       "word",
+       -29.504,
+       -3.5209,
+       -9.6804,
+       -12.2588
+      ],
+      [
+       "Aim",
+       "word",
+       0.0,
+       -3.5209,
+       -10.6384,
+       -14.5342
+      ],
+      [
+       "Jim",
+       "word",
+       0.0,
+       -3.5209,
+       -10.7243,
+       -12.3691
+      ],
+      [
+       "Tim",
+       "word",
+       0.0,
+       -3.5209,
+       -11.0043,
+       -12.8066
+      ],
+      [
+       "Kim",
+       "word",
+       0.0,
+       -3.5209,
+       -11.5193,
+       -13.4287
+      ]
+     ]
+    },
+    {
+     "typed": "dont",
+     "greedy_word": "don't",
+     "nonword": true,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      19,
+      24
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0007,
+     "alts": [
+      [
+       "dont",
+       "copy",
+       -9.5252,
+       2.1682,
+       -17.7201,
+       -3.3828
+      ],
+      [
+       "don't",
+       "greedy",
+       0.0,
+       1.2519,
+       -5.7526,
+       0.0
+      ],
+      [
+       "donut",
+       "word",
+       -14.8548,
+       -2.4367,
+       -12.9512,
+       -8.4551
+      ],
+      [
+       "font",
+       "word",
+       -17.1039,
+       -3.3528,
+       -11.715,
+       -7.8633
+      ],
+      [
+       "dosnt",
+       "word",
+       -22.8215,
+       -2.4367,
+       -15.293,
+       -9.9268
+      ],
+      [
+       "donte",
+       "word",
+       0.0,
+       -2.4368,
+       -16.2093,
+       -10.6865
+      ],
+      [
+       "done",
+       "word",
+       0.0,
+       -6.7307,
+       -7.6714,
+       -6.626
+      ],
+      [
+       "dint",
+       "word",
+       0.0,
+       -3.3528,
+       -14.5703,
+       -10.1074
+      ],
+      [
+       "don'ts",
+       "word",
+       0.0,
+       -3.3531,
+       -14.6407,
+       -10.3281
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Their going to the libary tomorow morning",
+   "style": "standard",
+   "constrained_greedy": "They're going to the library tomorrow morning",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "They're going to the library tomorrow morning",
+   "auto": [
+    {
+     "typed": "Their",
+     "to": "They're",
+     "margin": -3.677
+    },
+    {
+     "typed": "libary",
+     "to": "library",
+     "margin": 17.868
+    },
+    {
+     "typed": "tomorow",
+     "to": "tomorrow",
+     "margin": 18.384
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Their",
+     "greedy_word": "They're",
+     "nonword": false,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      7
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": 66,
+     "wlp": -0.0449,
+     "alts": [
+      [
+       "Their",
+       "copy",
+       -4.3928,
+       2.7103,
+       -6.2312,
+       -6.2646
+      ],
+      [
+       "They're",
+       "greedy",
+       0.0,
+       -11.6941,
+       -7.4614,
+       0.0
+      ]
+     ]
+    },
+    {
+     "typed": "libary",
+     "greedy_word": "library",
+     "nonword": true,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      21,
+      28
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0,
+     "alts": [
+      [
+       "libary",
+       "copy",
+       -12.411,
+       3.2523,
+       -17.7201,
+       -15.5127
+      ],
+      [
+       "library",
+       "greedy",
+       0.0,
+       -1.3466,
+       -9.6658,
+       0.0
+      ],
+      [
+       "library's",
+       "word",
+       -14.6703,
+       -6.8679,
+       -13.9501,
+       -9.793
+      ],
+      [
+       "liberty",
+       "word",
+       -16.1814,
+       -10.2338,
+       -11.4075,
+       -8.8232
+      ],
+      [
+       "binary",
+       "word",
+       -14.0927,
+       -11.1645,
+       -11.2402,
+       -7.9346
+      ],
+      [
+       "libtard",
+       "word",
+       0.0,
+       -10.2514,
+       -15.4914,
+       -14.3955
+      ],
+      [
+       "livery",
+       "word",
+       0.0,
+       -11.1671,
+       -15.1446,
+       -14.0918
+      ],
+      [
+       "libert",
+       "word",
+       0.0,
+       -11.1674,
+       -16.3428,
+       -15.3545
+      ],
+      [
+       "libra",
+       "word",
+       0.0,
+       -12.3054,
+       -14.4688,
+       -13.877
+      ]
+     ]
+    },
+    {
+     "typed": "tomorow",
+     "greedy_word": "tomorrow",
+     "nonword": true,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      29,
+      37
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0001,
+     "alts": [
+      [
+       "tomorow",
+       "copy",
+       -12.3043,
+       3.7944,
+       -17.7201,
+       -16.0723
+      ],
+      [
+       "tomorrow",
+       "greedy",
+       0.0,
+       -0.1175,
+       -9.8063,
+       0.0
+      ],
+      [
+       "tomorrows",
+       "word",
+       -24.2135,
+       -4.7225,
+       -15.0003,
+       -15.5273
+      ],
+      [
+       "tomorrow's",
+       "word",
+       -10.6118,
+       -5.6388,
+       -13.4336,
+       -14.4521
+      ],
+      [
+       "totoro",
+       "word",
+       -19.0806,
+       -15.5691,
+       -15.3764,
+       -15.8643
+      ],
+      [
+       "tomatoe",
+       "word",
+       0.0,
+       -16.1433,
+       -15.4438,
+       -15.6152
+      ],
+      [
+       "doctorow",
+       "word",
+       0.0,
+       -17.9127,
+       -13.958,
+       -15.8877
+      ],
+      [
+       "tomoe",
+       "word",
+       0.0,
+       -17.2711,
+       -15.9861,
+       -17.2627
+      ],
+      [
+       "woodrow",
+       "word",
+       0.0,
+       -18.7975,
+       -14.3969,
+       -16.1826
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "i cant beleive its already novemebr",
+   "style": "standard",
+   "constrained_greedy": "I can't believe it's already novemebr",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "I can't believe it's already november",
+   "auto": [
+    {
+     "typed": "cant",
+     "to": "can't",
+     "margin": 12.337
+    },
+    {
+     "typed": "beleive",
+     "to": "believe",
+     "margin": 14.627
+    },
+    {
+     "typed": "its",
+     "to": "it's",
+     "margin": 6.347
+    },
+    {
+     "typed": "novemebr",
+     "to": "november",
+     "margin": -0.662
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "cant",
+     "greedy_word": "can't",
+     "nonword": true,
+     "name_like": false,
+     "j": 1,
+     "span": [
+      2,
+      7
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0015,
+     "alts": [
+      [
+       "cant",
+       "copy",
+       -9.0837,
+       2.1682,
+       -17.7201,
+       -7.4238
+      ],
+      [
+       "can't",
+       "greedy",
+       0.0,
+       1.2519,
+       -6.9215,
+       0.0
+      ],
+      [
+       "chant",
+       "word",
+       -12.8647,
+       -2.4367,
+       -13.5756,
+       -24.8262
+      ],
+      [
+       "scant",
+       "word",
+       -15.804,
+       -2.4368,
+       -14.093,
+       -25.4971
+      ],
+      [
+       "canto",
+       "word",
+       -14.891,
+       -2.4368,
+       -14.9782,
+       -26.3555
+      ],
+      [
+       "want",
+       "word",
+       0.0,
+       -6.7307,
+       -6.4388,
+       -13.4766
+      ],
+      [
+       "canst",
+       "word",
+       0.0,
+       -2.4367,
+       -16.4324,
+       -27.9648
+      ],
+      [
+       "cannot",
+       "word",
+       0.0,
+       -6.3486,
+       -8.797,
+       -7.082
+      ],
+      [
+       "can",
+       "word",
+       0.0,
+       -8.2964,
+       -5.5157,
+       -7.999
+      ]
+     ]
+    },
+    {
+     "typed": "beleive",
+     "greedy_word": "believe",
+     "nonword": true,
+     "name_like": false,
+     "j": 2,
+     "span": [
+      8,
+      15
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0002,
+     "alts": [
+      [
+       "beleive",
+       "copy",
+       -10.1194,
+       3.7944,
+       -17.7201,
+       -14.1309
+      ],
+      [
+       "believe",
+       "greedy",
+       0.0,
+       -1.3217,
+       -7.7184,
+       0.0
+      ],
+      [
+       "believed",
+       "word",
+       -16.0535,
+       -5.9267,
+       -10.452,
+       -18.3379
+      ],
+      [
+       "believes",
+       "word",
+       -13.348,
+       -5.9267,
+       -10.8023,
+       -16.9365
+      ],
+      [
+       "believer",
+       "word",
+       -18.5501,
+       -5.9228,
+       -12.3277,
+       -21.5098
+      ],
+      [
+       "relieve",
+       "word",
+       0.0,
+       -10.2205,
+       -12.4388,
+       -21.7383
+      ],
+      [
+       "believers",
+       "word",
+       0.0,
+       -10.5279,
+       -12.4302,
+       -21.126
+      ],
+      [
+       "beehive",
+       "word",
+       0.0,
+       -9.9004,
+       -14.8743,
+       -22.4434
+      ],
+      [
+       "beeline",
+       "word",
+       0.0,
+       -10.2204,
+       -15.2347,
+       -23.2695
+      ]
+     ]
+    },
+    {
+     "typed": "its",
+     "greedy_word": "it's",
+     "nonword": false,
+     "name_like": false,
+     "j": 3,
+     "span": [
+      16,
+      20
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": 134,
+     "wlp": -0.0024,
+     "alts": [
+      [
+       "its",
+       "copy",
+       -6.703,
+       1.6262,
+       -6.9957,
+       -8.2051
+      ],
+      [
+       "it's",
+       "greedy",
+       0.0,
+       0.7099,
+       -5.4389,
+       0.0
+      ]
+     ]
+    },
+    {
+     "typed": "novemebr",
+     "greedy_word": "novemebr",
+     "nonword": true,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      29,
+      37
+     ],
+     "changed": false,
+     "rare": false,
+     "rank": -1,
+     "wlp": -1.1817,
+     "alts": [
+      [
+       "novemebr",
+       "copy",
+       0.0,
+       4.3364,
+       -17.7201,
+       0.0
+      ],
+      [
+       "november",
+       "word",
+       -0.0624,
+       -0.7796,
+       -10.5827,
+       3.916
+      ],
+      [
+       "movember",
+       "word",
+       -15.8613,
+       -6.3006,
+       -15.7238,
+       0.6396
+      ],
+      [
+       "november's",
+       "word",
+       -16.1348,
+       -6.3009,
+       -16.137,
+       0.2969
+      ],
+      [
+       "movement",
+       "word",
+       0.0,
+       -12.2265,
+       -9.613,
+       5.292
+      ],
+      [
+       "noblemen",
+       "word",
+       0.0,
+       -21.7082,
+       -15.086,
+       1.3252
+      ],
+      [
+       "december",
+       "word",
+       0.0,
+       -24.0877,
+       -10.5882,
+       3.7861
+      ],
+      [
+       "convener",
+       "word",
+       0.0,
+       -21.3131,
+       -16.4324,
+       0.0684
+      ],
+      [
+       "pavement",
+       "word",
+       0.0,
+       -24.2894,
+       -12.6313,
+       2.6914
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Please recieve the packge at teh front desk",
+   "style": "standard",
+   "constrained_greedy": "Please receive the package at the front desk",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Please receive the package at the front desk",
+   "auto": [
+    {
+     "typed": "recieve",
+     "to": "receive",
+     "margin": 3.474
+    },
+    {
+     "typed": "packge",
+     "to": "package",
+     "margin": 10.406
+    },
+    {
+     "typed": "teh",
+     "to": "the",
+     "margin": 15.059
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "recieve",
+     "greedy_word": "receive",
+     "nonword": true,
+     "name_like": false,
+     "j": 1,
+     "span": [
+      7,
+      14
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0114,
+     "alts": [
+      [
+       "recieve",
+       "copy",
+       -5.3479,
+       3.7944,
+       -17.7201,
+       -1.3682
+      ],
+      [
+       "receive",
+       "greedy",
+       0.0,
+       -1.3216,
+       -9.9375,
+       0.0
+      ],
+      [
+       "received",
+       "word",
+       -6.9555,
+       -5.9265,
+       -9.8942,
+       1.1348
+      ],
+      [
+       "relieve",
+       "word",
+       -10.9392,
+       -5.1044,
+       -12.4388,
+       -1.2441
+      ],
+      [
+       "receiver",
+       "word",
+       -11.3493,
+       -5.9188,
+       -11.8148,
+       -3.3975
+      ],
+      [
+       "receives",
+       "word",
+       0.0,
+       -5.9265,
+       -12.014,
+       0.6885
+      ],
+      [
+       "recurve",
+       "word",
+       0.0,
+       -7.2475,
+       -15.6215,
+       -5.5986
+      ],
+      [
+       "retrieve",
+       "word",
+       0.0,
+       -9.0174,
+       -12.6589,
+       -0.7012
+      ],
+      [
+       "relieved",
+       "word",
+       0.0,
+       -9.7095,
+       -12.1179,
+       -1.291
+      ]
+     ]
+    },
+    {
+     "typed": "packge",
+     "greedy_word": "package",
+     "nonword": true,
+     "name_like": false,
+     "j": 3,
+     "span": [
+      19,
+      26
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0003,
+     "alts": [
+      [
+       "packge",
+       "copy",
+       -9.3418,
+       3.2523,
+       -17.7201,
+       -6.7324
+      ],
+      [
+       "package",
+       "greedy",
+       0.0,
+       -1.3526,
+       -10.4128,
+       0.0
+      ],
+      [
+       "packages",
+       "word",
+       -10.2787,
+       -5.9576,
+       -11.4057,
+       -1.7549
+      ],
+      [
+       "packaged",
+       "word",
+       -14.1355,
+       -5.9576,
+       -12.2305,
+       -5.1875
+      ],
+      [
+       "packager",
+       "word",
+       -17.9591,
+       -5.9538,
+       -16.6023,
+       -10.1357
+      ],
+      [
+       "packed",
+       "word",
+       0.0,
+       -10.4421,
+       -10.9657,
+       -3.3223
+      ],
+      [
+       "packet",
+       "word",
+       0.0,
+       -10.4182,
+       -11.8348,
+       -1.8145
+      ],
+      [
+       "packer",
+       "word",
+       0.0,
+       -10.0589,
+       -14.1584,
+       -5.0488
+      ],
+      [
+       "spackle",
+       "word",
+       0.0,
+       -10.2515,
+       -14.5511,
+       -5.3887
+      ]
+     ]
+    },
+    {
+     "typed": "teh",
+     "greedy_word": "the",
+     "nonword": true,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      30,
+      33
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0002,
+     "alts": [
+      [
+       "teh",
+       "copy",
+       -10.9712,
+       1.6262,
+       -17.7201,
+       -13.291
+      ],
+      [
+       "the",
+       "greedy",
+       0.0,
+       -3.4899,
+       -3.1822,
+       0.0
+      ],
+      [
+       "tech",
+       "word",
+       -11.11,
+       -2.9787,
+       -9.6816,
+       -13.3477
+      ],
+      [
+       "yeh",
+       "word",
+       -12.9866,
+       -3.8948,
+       -12.8106,
+       -17.4541
+      ],
+      [
+       "eth",
+       "word",
+       -16.6867,
+       -3.4899,
+       -13.8651,
+       -17.6572
+      ],
+      [
+       "they",
+       "word",
+       0.0,
+       -8.0718,
+       -5.3906,
+       -13.7227
+      ],
+      [
+       "them",
+       "word",
+       0.0,
+       -8.0726,
+       -6.0394,
+       -12.3574
+      ],
+      [
+       "teah",
+       "word",
+       0.0,
+       -2.9787,
+       -16.2606,
+       -19.1123
+      ],
+      [
+       "then",
+       "word",
+       0.0,
+       -8.0726,
+       -6.2765,
+       -13.0938
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "He said hes comming back in a few minuts",
+   "style": "standard",
+   "constrained_greedy": "He said he's coming back in a few minutes",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "He said he's coming back in a few minutes",
+   "auto": [
+    {
+     "typed": "hes",
+     "to": "he's",
+     "margin": 16.352
+    },
+    {
+     "typed": "comming",
+     "to": "coming",
+     "margin": 14.315
+    },
+    {
+     "typed": "minuts",
+     "to": "minutes",
+     "margin": 13.05
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "hes",
+     "greedy_word": "he's",
+     "nonword": true,
+     "name_like": false,
+     "j": 2,
+     "span": [
+      8,
+      12
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0015,
+     "alts": [
+      [
+       "hes",
+       "copy",
+       -11.2258,
+       1.6262,
+       -17.7201,
+       -11.168
+      ],
+      [
+       "he's",
+       "greedy",
+       0.0,
+       0.7099,
+       -7.9734,
+       0.0
+      ],
+      [
+       "she's",
+       "word",
+       -8.1843,
+       -3.8952,
+       -8.7111,
+       -5.4238
+      ],
+      [
+       "hers",
+       "word",
+       -15.7466,
+       -2.9749,
+       -11.6248,
+       -11.334
+      ],
+      [
+       "hess",
+       "word",
+       -18.2289,
+       -2.2858,
+       -14.6832,
+       -12.7051
+      ],
+      [
+       "hrs",
+       "word",
+       0.0,
+       -3.8948,
+       -11.6359,
+       -12.4678
+      ],
+      [
+       "hens",
+       "word",
+       0.0,
+       -2.9787,
+       -13.7099,
+       -12.2852
+      ],
+      [
+       "hues",
+       "word",
+       0.0,
+       -2.9787,
+       -13.8046,
+       -12.4102
+      ],
+      [
+       "he'd",
+       "word",
+       0.0,
+       -4.811,
+       -10.1788,
+       -4.0
+      ]
+     ]
+    },
+    {
+     "typed": "comming",
+     "greedy_word": "coming",
+     "nonword": true,
+     "name_like": false,
+     "j": 3,
+     "span": [
+      13,
+      19
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0001,
+     "alts": [
+      [
+       "comming",
+       "copy",
+       -10.7839,
+       3.8005,
+       -17.7201,
+       -12.1562
+      ],
+      [
+       "coming",
+       "greedy",
+       0.0,
+       -1.2942,
+       -8.4441,
+       0.0
+      ],
+      [
+       "combing",
+       "word",
+       -12.7831,
+       -4.7291,
+       -14.096,
+       -11.9482
+      ],
+      [
+       "commuting",
+       "word",
+       -18.6028,
+       -5.4052,
+       -12.8023,
+       -11.3184
+      ],
+      [
+       "cumming",
+       "word",
+       -12.1486,
+       -5.0983,
+       -14.0065,
+       -11.7324
+      ],
+      [
+       "camming",
+       "word",
+       0.0,
+       -5.0983,
+       -15.8377,
+       -12.6943
+      ],
+      [
+       "comping",
+       "word",
+       0.0,
+       -4.7291,
+       -16.6793,
+       -13.3535
+      ],
+      [
+       "comings",
+       "word",
+       0.0,
+       -5.8992,
+       -14.7164,
+       -13.3213
+      ],
+      [
+       "communing",
+       "word",
+       0.0,
+       -5.3877,
+       -16.048,
+       -14.29
+      ]
+     ]
+    },
+    {
+     "typed": "minuts",
+     "greedy_word": "minutes",
+     "nonword": true,
+     "name_like": false,
+     "j": 8,
+     "span": [
+      34,
+      41
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0002,
+     "alts": [
+      [
+       "minuts",
+       "copy",
+       -9.0449,
+       3.2523,
+       -17.7201,
+       -12.6143
+      ],
+      [
+       "minutes",
+       "greedy",
+       0.0,
+       -1.3526,
+       -8.5162,
+       0.0
+      ],
+      [
+       "minuets",
+       "word",
+       -15.8355,
+       -1.3526,
+       -15.4555,
+       -6.5576
+      ],
+      [
+       "minute's",
+       "word",
+       -20.4132,
+       -2.2689,
+       -15.4438,
+       -13.2686
+      ],
+      [
+       "minute",
+       "word",
+       -10.858,
+       -5.613,
+       -9.4323,
+       -5.7393
+      ],
+      [
+       "minus",
+       "word",
+       0.0,
+       -7.1834,
+       -11.3806,
+       -8.7725
+      ],
+      [
+       "mounts",
+       "word",
+       0.0,
+       -7.3846,
+       -12.9726,
+       -10.1641
+      ],
+      [
+       "mints",
+       "word",
+       0.0,
+       -7.1832,
+       -13.9042,
+       -11.1523
+      ],
+      [
+       "minutia",
+       "word",
+       0.0,
+       -6.8402,
+       -14.7507,
+       -11.8613
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "wat r u doing tonite",
+   "style": "standard",
+   "constrained_greedy": "What r u doing tonite",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "What r u doing tonite",
+   "auto": [
+    {
+     "typed": "wat",
+     "to": "What",
+     "margin": 3.244
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "wat",
+     "greedy_word": "What",
+     "nonword": false,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      4
+     ],
+     "changed": true,
+     "rare": true,
+     "rank": 10297,
+     "wlp": -0.9142,
+     "alts": [
+      [
+       "Wat",
+       "copy",
+       -5.5244,
+       1.6262,
+       -12.2552,
+       -8.0449
+      ],
+      [
+       "What",
+       "greedy",
+       0.0,
+       -2.9787,
+       -5.5394,
+       0.0
+      ],
+      [
+       "Want",
+       "word",
+       -9.9461,
+       -2.9787,
+       -6.4388,
+       -7.4131
+      ],
+      [
+       "Way",
+       "word",
+       -8.019,
+       -3.8948,
+       -6.4781,
+       -9.5674
+      ],
+      [
+       "Wait",
+       "word",
+       -5.9823,
+       -2.9787,
+       -8.3856,
+       -8.335
+      ],
+      [
+       "War",
+       "word",
+       0.0,
+       -3.8948,
+       -8.234,
+       -8.957
+      ],
+      [
+       "Eat",
+       "word",
+       0.0,
+       -3.8948,
+       -8.3041,
+       -8.6133
+      ],
+      [
+       "Watt",
+       "word",
+       0.0,
+       -2.2858,
+       -12.0793,
+       -10.4287
+      ],
+      [
+       "Walt",
+       "word",
+       0.0,
+       -2.9787,
+       -12.8454,
+       -10.127
+      ]
+     ]
+    },
+    {
+     "typed": "tonite",
+     "greedy_word": "tonite",
+     "nonword": false,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      15,
+      21
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 58370,
+     "wlp": -0.2541,
+     "alts": [
+      [
+       "tonite",
+       "copy",
+       0.0,
+       3.2523,
+       -15.5941,
+       0.0
+      ],
+      [
+       "finite",
+       "word",
+       -8.404,
+       -11.1337,
+       -11.5833,
+       1.9307
+      ],
+      [
+       "pointe",
+       "word",
+       -14.5656,
+       -10.7625,
+       -14.4386,
+       0.4141
+      ],
+      [
+       "moniter",
+       "word",
+       -18.8926,
+       -10.2477,
+       -15.8728,
+       -0.585
+      ],
+      [
+       "ninite",
+       "word",
+       0.0,
+       -11.1672,
+       -14.6511,
+       0.3027
+      ],
+      [
+       "onsite",
+       "word",
+       0.0,
+       -11.8162,
+       -13.7956,
+       1.3428
+      ],
+      [
+       "toonie",
+       "word",
+       0.0,
+       -11.0896,
+       -16.497,
+       -1.7832
+      ],
+      [
+       "tongue",
+       "word",
+       0.0,
+       -14.3252,
+       -10.8629,
+       2.8457
+      ],
+      [
+       "townie",
+       "word",
+       0.0,
+       -11.7876,
+       -16.1846,
+       -0.7959
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "The comittee will anounce the resluts on Monday.",
+   "style": "standard",
+   "constrained_greedy": "The committee will announce the results on Monday.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "The committee will announce the results on Monday.",
+   "auto": [
+    {
+     "typed": "comittee",
+     "to": "committee",
+     "margin": 11.857
+    },
+    {
+     "typed": "anounce",
+     "to": "announce",
+     "margin": 11.761
+    },
+    {
+     "typed": "resluts",
+     "to": "results",
+     "margin": 18.186
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "comittee",
+     "greedy_word": "committee",
+     "nonword": true,
+     "name_like": false,
+     "j": 1,
+     "span": [
+      4,
+      13
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0003,
+     "alts": [
+      [
+       "comittee",
+       "copy",
+       -8.7177,
+       4.3486,
+       -17.7201,
+       -10.1914
+      ],
+      [
+       "committee",
+       "greedy",
+       0.0,
+       0.4367,
+       -10.9237,
+       0.0
+      ],
+      [
+       "committees",
+       "word",
+       -10.7338,
+       -4.1682,
+       -13.1648,
+       -9.0781
+      ],
+      [
+       "committee's",
+       "word",
+       -12.3646,
+       -5.0844,
+       -14.6407,
+       -5.5488
+      ],
+      [
+       "committed",
+       "word",
+       -12.9737,
+       -8.0696,
+       -10.4803,
+       -9.2695
+      ],
+      [
+       "committer",
+       "word",
+       0.0,
+       -5.0692,
+       -16.6793,
+       -13.6006
+      ],
+      [
+       "computer",
+       "word",
+       0.0,
+       -16.2618,
+       -8.7487,
+       0.1582
+      ],
+      [
+       "commute",
+       "word",
+       0.0,
+       -15.2137,
+       -11.6724,
+       -6.2666
+      ],
+      [
+       "omitted",
+       "word",
+       0.0,
+       -14.6221,
+       -13.1962,
+       -11.6582
+      ]
+     ]
+    },
+    {
+     "typed": "anounce",
+     "greedy_word": "announce",
+     "nonword": true,
+     "name_like": false,
+     "j": 3,
+     "span": [
+      19,
+      27
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0016,
+     "alts": [
+      [
+       "anounce",
+       "copy",
+       -9.6842,
+       3.7944,
+       -17.7201,
+       -8.0645
+      ],
+      [
+       "announce",
+       "greedy",
+       0.0,
+       -0.1175,
+       -11.9554,
+       0.0
+      ],
+      [
+       "announced",
+       "word",
+       -8.9318,
+       -4.7226,
+       -10.7651,
+       -5.3262
+      ],
+      [
+       "announces",
+       "word",
+       -18.2152,
+       -4.7226,
+       -13.1103,
+       -6.0078
+      ],
+      [
+       "announcer",
+       "word",
+       -17.2863,
+       -4.7187,
+       -13.5631,
+       -11.0195
+      ],
+      [
+       "denounce",
+       "word",
+       0.0,
+       -9.0175,
+       -13.9017,
+       -7.624
+      ],
+      [
+       "renounce",
+       "word",
+       0.0,
+       -9.0175,
+       -14.3034,
+       -8.3301
+      ],
+      [
+       "bounce",
+       "word",
+       0.0,
+       -12.1577,
+       -11.6772,
+       -3.668
+      ],
+      [
+       "anyone",
+       "word",
+       0.0,
+       -17.2655,
+       -7.9006,
+       -5.5576
+      ]
+     ]
+    },
+    {
+     "typed": "resluts",
+     "greedy_word": "results",
+     "nonword": true,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      32,
+      39
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0,
+     "alts": [
+      [
+       "resluts",
+       "copy",
+       -17.1856,
+       3.7944,
+       -17.7201,
+       -7.1162
+      ],
+      [
+       "results",
+       "greedy",
+       0.0,
+       -1.3217,
+       -9.0855,
+       0.0
+      ],
+      [
+       "result",
+       "word",
+       -11.3689,
+       -11.7861,
+       -9.0842,
+       -1.3027
+      ],
+      [
+       "resolute",
+       "word",
+       -21.2192,
+       -9.6759,
+       -14.6778,
+       -5.3936
+      ],
+      [
+       "realist",
+       "word",
+       -19.1116,
+       -12.3636,
+       -13.0619,
+       -4.2432
+      ],
+      [
+       "resorts",
+       "word",
+       0.0,
+       -13.96,
+       -12.6106,
+       -2.1885
+      ],
+      [
+       "resists",
+       "word",
+       0.0,
+       -13.7877,
+       -13.9874,
+       -7.749
+      ],
+      [
+       "rescues",
+       "word",
+       0.0,
+       -14.0032,
+       -13.8091,
+       -5.582
+      ],
+      [
+       "resents",
+       "word",
+       0.0,
+       -13.9932,
+       -15.136,
+       -9.0205
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "I wanna go to the beech but its raining",
+   "style": "standard",
+   "constrained_greedy": "I wanna go to the beach but it's raining",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "I wanna go to the beach but it's raining",
+   "auto": [
+    {
+     "typed": "beech",
+     "to": "beach",
+     "margin": 4.472
+    },
+    {
+     "typed": "its",
+     "to": "it's",
+     "margin": 1.16
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "beech",
+     "greedy_word": "beach",
+     "nonword": false,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      18,
+      23
+     ],
+     "changed": true,
+     "rare": true,
+     "rank": 42137,
+     "wlp": -0.0008,
+     "alts": [
+      [
+       "beech",
+       "copy",
+       -7.3483,
+       2.7164,
+       -14.8743,
+       -10.7773
+      ],
+      [
+       "beach",
+       "greedy",
+       0.0,
+       -5.8132,
+       -9.9811,
+       0.0
+      ],
+      [
+       "breech",
+       "word",
+       -15.2003,
+       -1.8807,
+       -14.8106,
+       -10.8457
+      ],
+      [
+       "bench",
+       "word",
+       -9.9849,
+       -5.8132,
+       -10.1862,
+       -2.3223
+      ],
+      [
+       "leech",
+       "word",
+       -17.7284,
+       -6.1824,
+       -13.462,
+       -10.0771
+      ],
+      [
+       "blech",
+       "word",
+       0.0,
+       -5.8132,
+       -14.6511,
+       -14.001
+      ],
+      [
+       "beseech",
+       "word",
+       0.0,
+       -5.3991,
+       -15.8038,
+       -15.1875
+      ],
+      [
+       "breach",
+       "word",
+       0.0,
+       -7.3615,
+       -12.0826,
+       -7.873
+      ],
+      [
+       "belch",
+       "word",
+       0.0,
+       -5.8132,
+       -15.5544,
+       -14.1357
+      ]
+     ]
+    },
+    {
+     "typed": "its",
+     "greedy_word": "it's",
+     "nonword": false,
+     "name_like": false,
+     "j": 7,
+     "span": [
+      28,
+      32
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": 134,
+     "wlp": -0.0168,
+     "alts": [
+      [
+       "its",
+       "copy",
+       -4.1281,
+       1.6262,
+       -6.9957,
+       -2.9805
+      ],
+      [
+       "it's",
+       "greedy",
+       0.0,
+       0.7099,
+       -5.4389,
+       0.0
+      ]
+     ]
+    },
+    {
+     "typed": "raining",
+     "greedy_word": "raining",
+     "nonword": false,
+     "name_like": false,
+     "j": 8,
+     "span": [
+      33,
+      40
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 10212,
+     "wlp": -0.0003,
+     "alts": [
+      [
+       "raining",
+       "copy",
+       0.0,
+       3.7944,
+       -12.2428,
+       0.0
+      ],
+      [
+       "training",
+       "word",
+       -9.0991,
+       -0.8068,
+       -8.9756,
+       -3.3975
+      ],
+      [
+       "draining",
+       "word",
+       -10.1257,
+       -0.8107,
+       -12.274,
+       -3.9629
+      ],
+      [
+       "raising",
+       "word",
+       -16.3441,
+       -5.1017,
+       -10.8574,
+       -5.5908
+      ],
+      [
+       "gaining",
+       "word",
+       0.0,
+       -5.1045,
+       -11.0714,
+       -3.9619
+      ],
+      [
+       "remaining",
+       "word",
+       0.0,
+       -5.4116,
+       -10.672,
+       -5.7842
+      ],
+      [
+       "ruining",
+       "word",
+       0.0,
+       -5.1044,
+       -11.6551,
+       -3.543
+      ],
+      [
+       "raiding",
+       "word",
+       0.0,
+       -5.1017,
+       -12.9894,
+       -6.9609
+      ],
+      [
+       "railing",
+       "word",
+       0.0,
+       -5.1017,
+       -12.9904,
+       -7.2646
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Did you see the new episde of that show",
+   "style": "standard",
+   "constrained_greedy": "Did you see the new episode of that show",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Did you see the new episode of that show",
+   "auto": [
+    {
+     "typed": "episde",
+     "to": "episode",
+     "margin": 18.072
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "episde",
+     "greedy_word": "episode",
+     "nonword": true,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      20,
+      27
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0059,
+     "alts": [
+      [
+       "episde",
+       "copy",
+       -14.2997,
+       3.2523,
+       -17.7201,
+       -12.1494
+      ],
+      [
+       "episode",
+       "greedy",
+       0.0,
+       -1.3526,
+       -8.8629,
+       0.0
+      ],
+      [
+       "episodes",
+       "word",
+       -5.4501,
+       -5.9576,
+       -9.6565,
+       0.21
+      ],
+      [
+       "episode's",
+       "word",
+       -14.0968,
+       -6.8739,
+       -15.054,
+       -14.8857
+      ],
+      [
+       "upside",
+       "word",
+       -13.8267,
+       -10.7625,
+       -11.2442,
+       -9.3555
+      ],
+      [
+       "exposed",
+       "word",
+       0.0,
+       -11.9893,
+       -10.6407,
+       -11.8223
+      ],
+      [
+       "epistle",
+       "word",
+       0.0,
+       -9.5586,
+       -15.6215,
+       -15.1895
+      ],
+      [
+       "eliade",
+       "word",
+       0.0,
+       -11.1339,
+       -16.3428,
+       -15.6289
+      ],
+      [
+       "existed",
+       "word",
+       0.0,
+       -15.345,
+       -10.4333,
+       -11.9209
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "thx for the help yesterday i realy apreciate it",
+   "style": "standard",
+   "constrained_greedy": "thx for the help yesterday I really appreciate it",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "thx for the help yesterday I really appreciate it",
+   "auto": [
+    {
+     "typed": "realy",
+     "to": "really",
+     "margin": 15.623
+    },
+    {
+     "typed": "apreciate",
+     "to": "appreciate",
+     "margin": 14.929
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "thx",
+     "greedy_word": "thx",
+     "nonword": false,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      3
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 10588,
+     "wlp": -0.0011,
+     "alts": [
+      [
+       "thx",
+       "copy",
+       0.0,
+       1.6262,
+       -12.2968,
+       0.0
+      ],
+      [
+       "the",
+       "word",
+       -10.7282,
+       -7.2727,
+       -3.1822,
+       -3.1123
+      ],
+      [
+       "thc",
+       "word",
+       -13.6063,
+       -3.8948,
+       -12.5067,
+       -11.6045
+      ],
+      [
+       "thnx",
+       "word",
+       -19.6338,
+       -2.9787,
+       -14.6049,
+       -2.2432
+      ],
+      [
+       "kthx",
+       "word",
+       0.0,
+       -2.9789,
+       -15.9861,
+       -12.7422
+      ],
+      [
+       "tax",
+       "word",
+       0.0,
+       -7.2726,
+       -9.044,
+       -5.8623
+      ],
+      [
+       "thz",
+       "word",
+       0.0,
+       -3.8948,
+       -16.027,
+       -17.5088
+      ],
+      [
+       "tho",
+       "word",
+       0.0,
+       -7.2727,
+       -10.465,
+       -8.6855
+      ],
+      [
+       "th",
+       "word",
+       0.0,
+       -8.8385,
+       -8.6249,
+       -7.7334
+      ]
+     ]
+    },
+    {
+     "typed": "realy",
+     "greedy_word": "really",
+     "nonword": true,
+     "name_like": false,
+     "j": 6,
+     "span": [
+      29,
+      35
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0032,
+     "alts": [
+      [
+       "realy",
+       "copy",
+       -9.466,
+       2.7103,
+       -17.7201,
+       -16.2256
+      ],
+      [
+       "really",
+       "greedy",
+       0.0,
+       -1.2016,
+       -6.0271,
+       0.0
+      ],
+      [
+       "relay",
+       "word",
+       -13.4509,
+       -2.4058,
+       -12.3883,
+       -19.8916
+      ],
+      [
+       "realty",
+       "word",
+       -12.3503,
+       -1.8908,
+       -13.8967,
+       -20.4443
+      ],
+      [
+       "ready",
+       "word",
+       -10.682,
+       -6.1885,
+       -8.9985,
+       -17.457
+      ],
+      [
+       "reply",
+       "word",
+       0.0,
+       -6.1885,
+       -9.5303,
+       -15.6699
+      ],
+      [
+       "reality",
+       "word",
+       0.0,
+       -6.4957,
+       -9.1412,
+       -18.6816
+      ],
+      [
+       "real",
+       "word",
+       0.0,
+       -7.7544,
+       -7.7906,
+       -17.5684
+      ],
+      [
+       "greatly",
+       "word",
+       0.0,
+       -6.4996,
+       -10.6168,
+       -2.7471
+      ]
+     ]
+    },
+    {
+     "typed": "apreciate",
+     "greedy_word": "appreciate",
+     "nonword": true,
+     "name_like": false,
+     "j": 7,
+     "span": [
+      36,
+      46
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0112,
+     "alts": [
+      [
+       "apreciate",
+       "copy",
+       -5.1448,
+       4.8785,
+       -17.7201,
+       -23.4795
+      ],
+      [
+       "appreciate",
+       "greedy",
+       0.0,
+       0.9666,
+       -8.7309,
+       0.0
+      ],
+      [
+       "appreciated",
+       "word",
+       -8.2767,
+       -3.6384,
+       -10.699,
+       -5.8125
+      ],
+      [
+       "appreciates",
+       "word",
+       -13.736,
+       -3.6384,
+       -12.8594,
+       -12.7168
+      ],
+      [
+       "preciate",
+       "word",
+       -16.7628,
+       -5.5859,
+       -16.3718,
+       -24.4111
+      ],
+      [
+       "depreciate",
+       "word",
+       0.0,
+       -7.9334,
+       -14.4776,
+       -22.0439
+      ],
+      [
+       "appriciate",
+       "word",
+       0.0,
+       -7.9254,
+       -16.027,
+       -23.2617
+      ],
+      [
+       "predicate",
+       "word",
+       0.0,
+       -15.2845,
+       -13.8367,
+       -21.5439
+      ],
+      [
+       "deprecate",
+       "word",
+       0.0,
+       -18.369,
+       -15.5807,
+       -22.833
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "dont worry ill be there in a minuite",
+   "style": "casual",
+   "constrained_greedy": "dont worry ill be there in a minute",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "dont worry ill be there in a minute",
+   "auto": [
+    {
+     "typed": "minuite",
+     "to": "minute",
+     "margin": 1.988
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "dont",
+     "greedy_word": "dont",
+     "nonword": true,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      4
+     ],
+     "changed": false,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0029,
+     "alts": [
+      [
+       "dont",
+       "copy",
+       0.0,
+       2.1682,
+       -17.7201,
+       0.0
+      ],
+      [
+       "donut",
+       "word",
+       -20.1585,
+       -2.4367,
+       -12.9512,
+       -11.8799
+      ],
+      [
+       "font",
+       "word",
+       -16.6512,
+       -3.3528,
+       -11.715,
+       -11.2998
+      ],
+      [
+       "dosnt",
+       "word",
+       0.0,
+       -2.4367,
+       -15.293,
+       -15.6514
+      ],
+      [
+       "donte",
+       "word",
+       0.0,
+       -2.4368,
+       -16.2093,
+       -12.8643
+      ],
+      [
+       "done",
+       "word",
+       0.0,
+       -6.7307,
+       -7.6714,
+       -9.0928
+      ],
+      [
+       "dint",
+       "word",
+       0.0,
+       -3.3528,
+       -14.5703,
+       -15.832
+      ],
+      [
+       "don'ts",
+       "word",
+       0.0,
+       -3.3531,
+       -14.6407,
+       -16.0527
+      ]
+     ]
+    },
+    {
+     "typed": "minuite",
+     "greedy_word": "minute",
+     "nonword": true,
+     "name_like": false,
+     "j": 7,
+     "span": [
+      29,
+      35
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.1343,
+     "alts": [
+      [
+       "minuite",
+       "copy",
+       -2.2101,
+       3.7944,
+       -17.7201,
+       -9.3984
+      ],
+      [
+       "minute",
+       "greedy",
+       0.0,
+       -6.0491,
+       -9.4323,
+       0.0
+      ],
+      [
+       "minutiae",
+       "word",
+       -17.9136,
+       -5.9042,
+       -14.2669,
+       -10.8203
+      ],
+      [
+       "minutes",
+       "word",
+       -7.2587,
+       -10.6537,
+       -8.5162,
+       -7.0195
+      ],
+      [
+       "minutia",
+       "word",
+       -18.1777,
+       -10.2203,
+       -14.7507,
+       -11.001
+      ],
+      [
+       "minutae",
+       "word",
+       0.0,
+       -9.7097,
+       -16.6793,
+       -12.4629
+      ],
+      [
+       "miniitx",
+       "word",
+       0.0,
+       -10.6193,
+       -16.2093,
+       -12.2119
+      ],
+      [
+       "ninite",
+       "word",
+       0.0,
+       -11.5699,
+       -14.6511,
+       -10.9883
+      ],
+      [
+       "minute's",
+       "word",
+       0.0,
+       -11.5702,
+       -15.4438,
+       -7.2002
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "im gonna be late dont wait up",
+   "style": "casual",
+   "constrained_greedy": "im gonna be late dont wait up",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "im gonna be late dosnt wait up",
+   "auto": [
+    {
+     "typed": "dont",
+     "to": "dosnt",
+     "margin": -5.574
+    }
+   ],
+   "suggest": [
+    {
+     "typed": "im",
+     "to": "imo",
+     "margin": -7.411
+    }
+   ],
+   "plans": [
+    {
+     "typed": "im",
+     "greedy_word": "im",
+     "nonword": true,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      2
+     ],
+     "changed": false,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0003,
+     "alts": [
+      [
+       "im",
+       "copy",
+       0.0,
+       1.0841,
+       -17.7201,
+       0.0
+      ],
+      [
+       "in",
+       "word",
+       -12.757,
+       -4.4369,
+       -4.307,
+       -8.3037
+      ],
+      [
+       "him",
+       "word",
+       -12.7728,
+       -3.5209,
+       -7.0691,
+       -11.4033
+      ],
+      [
+       "imo",
+       "word",
+       0.0,
+       -3.5209,
+       -9.6804,
+       -10.2168
+      ],
+      [
+       "aim",
+       "word",
+       0.0,
+       -3.5209,
+       -10.6384,
+       -12.4922
+      ],
+      [
+       "jim",
+       "word",
+       0.0,
+       -3.5209,
+       -10.7243,
+       -10.3271
+      ],
+      [
+       "tim",
+       "word",
+       0.0,
+       -3.5209,
+       -11.0043,
+       -10.7646
+      ],
+      [
+       "kim",
+       "word",
+       0.0,
+       -3.5209,
+       -11.5193,
+       -11.3867
+      ]
+     ]
+    },
+    {
+     "typed": "dont",
+     "greedy_word": "dont",
+     "nonword": true,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      17,
+      21
+     ],
+     "changed": false,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.002,
+     "alts": [
+      [
+       "dont",
+       "copy",
+       0.0,
+       2.1682,
+       -17.7201,
+       0.0
+      ],
+      [
+       "donut",
+       "word",
+       -16.0111,
+       -2.4367,
+       -12.9512,
+       -5.0723
+      ],
+      [
+       "font",
+       "word",
+       -11.7398,
+       -3.3528,
+       -11.715,
+       -4.4805
+      ],
+      [
+       "dosnt",
+       "word",
+       0.0,
+       -2.4367,
+       -15.293,
+       -6.5439
+      ],
+      [
+       "donte",
+       "word",
+       0.0,
+       -2.4368,
+       -16.2093,
+       -7.3037
+      ],
+      [
+       "done",
+       "word",
+       0.0,
+       -6.7307,
+       -7.6714,
+       -3.2432
+      ],
+      [
+       "dint",
+       "word",
+       0.0,
+       -3.3528,
+       -14.5703,
+       -6.7246
+      ],
+      [
+       "don'ts",
+       "word",
+       0.0,
+       -3.3531,
+       -14.6407,
+       -6.9453
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "lol idk what ur talking abt tbh",
+   "style": "casual",
+   "constrained_greedy": "lol idk what ur talking abt tbh",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "lol idk what ur talking abt tbh",
+   "auto": [],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "abt",
+     "greedy_word": "abt",
+     "nonword": false,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      24,
+      27
+     ],
+     "changed": false,
+     "rare": true,
+     "rank": 30562,
+     "wlp": -0.0117,
+     "alts": [
+      [
+       "abt",
+       "copy",
+       0.0,
+       1.6262,
+       -14.2078,
+       0.0
+      ],
+      [
+       "bat",
+       "word",
+       -12.0766,
+       -3.4899,
+       -11.2057,
+       -4.2881
+      ],
+      [
+       "ant",
+       "word",
+       -12.12,
+       -3.8948,
+       -12.0477,
+       -4.3311
+      ],
+      [
+       "abit",
+       "word",
+       -11.4183,
+       -2.9787,
+       -14.1143,
+       -5.5957
+      ],
+      [
+       "abut",
+       "word",
+       0.0,
+       -2.9787,
+       -14.6724,
+       -5.873
+      ],
+      [
+       "about",
+       "word",
+       0.0,
+       -7.5836,
+       -5.5982,
+       5.9863
+      ],
+      [
+       "abet",
+       "word",
+       0.0,
+       -2.9787,
+       -15.7238,
+       -6.9912
+      ],
+      [
+       "abtf",
+       "word",
+       0.0,
+       -2.9789,
+       -16.137,
+       -7.1953
+      ],
+      [
+       "abot",
+       "word",
+       0.0,
+       -2.9787,
+       -16.2346,
+       -6.9307
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "i just finished faxing everything",
+   "style": "formal",
+   "constrained_greedy": "I just finished fixing everything.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "I just finished fixing everything.",
+   "auto": [
+    {
+     "typed": "faxing",
+     "to": "fixing",
+     "margin": -3.971
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "faxing",
+     "greedy_word": "fixing",
+     "nonword": false,
+     "name_like": false,
+     "j": 3,
+     "span": [
+      16,
+      22
+     ],
+     "changed": true,
+     "rare": true,
+     "rank": 61885,
+     "wlp": -0.2304,
+     "alts": [
+      [
+       "faxing",
+       "copy",
+       -1.6284,
+       3.2523,
+       -15.7085,
+       -5.7002
+      ],
+      [
+       "fixing",
+       "greedy",
+       0.0,
+       -5.6465,
+       -11.0616,
+       0.0
+      ],
+      [
+       "facing",
+       "word",
+       -5.092,
+       -2.2687,
+       -10.5816,
+       -2.8252
+      ],
+      [
+       "fading",
+       "word",
+       -7.0085,
+       -5.5184,
+       -12.2848,
+       -3.8193
+      ],
+      [
+       "taxing",
+       "word",
+       -7.378,
+       -5.613,
+       -12.3433,
+       -3.9922
+      ],
+      [
+       "faking",
+       "word",
+       0.0,
+       -5.6465,
+       -12.5963,
+       -4.3643
+      ],
+      [
+       "maxing",
+       "word",
+       0.0,
+       -5.6466,
+       -12.6539,
+       -4.9004
+      ],
+      [
+       "waxing",
+       "word",
+       0.0,
+       -5.6466,
+       -13.1731,
+       -4.2266
+      ],
+      [
+       "faring",
+       "word",
+       0.0,
+       -5.6465,
+       -14.1205,
+       -5.7236
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "Their going to the libary tomorow morning",
+   "style": "formal",
+   "constrained_greedy": "They are going to the library tomorrow morning.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "They are going to the library tomorrow morning.",
+   "auto": [
+    {
+     "typed": "Their",
+     "to": "They are",
+     "margin": -4.052
+    },
+    {
+     "typed": "libary",
+     "to": "library",
+     "margin": 21.081
+    },
+    {
+     "typed": "tomorow",
+     "to": "tomorrow",
+     "margin": 20.179
+    }
+   ],
+   "suggest": [],
+   "plans": [
+    {
+     "typed": "Their",
+     "greedy_word": "They are",
+     "nonword": false,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      8
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": 66,
+     "wlp": -0.0092,
+     "alts": [
+      [
+       "Their",
+       "copy",
+       -5.7284,
+       2.7103,
+       -6.2312,
+       -5.8477
+      ],
+      [
+       "They are",
+       "greedy",
+       0.0,
+       -14.6977,
+       -10.4441,
+       0.0
+      ]
+     ]
+    },
+    {
+     "typed": "libary",
+     "greedy_word": "library",
+     "nonword": true,
+     "name_like": false,
+     "j": 4,
+     "span": [
+      22,
+      29
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0001,
+     "alts": [
+      [
+       "libary",
+       "copy",
+       -15.6245,
+       3.2523,
+       -17.7201,
+       -15.5127
+      ],
+      [
+       "library",
+       "greedy",
+       0.0,
+       -1.3466,
+       -9.6658,
+       0.0
+      ],
+      [
+       "library's",
+       "word",
+       -14.4109,
+       -6.8679,
+       -13.9501,
+       -9.793
+      ],
+      [
+       "liberty",
+       "word",
+       -16.5599,
+       -10.2338,
+       -11.4075,
+       -8.8232
+      ],
+      [
+       "binary",
+       "word",
+       -14.1756,
+       -11.1645,
+       -11.2402,
+       -7.9346
+      ],
+      [
+       "libtard",
+       "word",
+       0.0,
+       -10.2514,
+       -15.4914,
+       -14.3955
+      ],
+      [
+       "livery",
+       "word",
+       0.0,
+       -11.1671,
+       -15.1446,
+       -14.0918
+      ],
+      [
+       "libert",
+       "word",
+       0.0,
+       -11.1674,
+       -16.3428,
+       -15.3545
+      ],
+      [
+       "libra",
+       "word",
+       0.0,
+       -12.3054,
+       -14.4688,
+       -13.877
+      ]
+     ]
+    },
+    {
+     "typed": "tomorow",
+     "greedy_word": "tomorrow",
+     "nonword": true,
+     "name_like": false,
+     "j": 5,
+     "span": [
+      30,
+      38
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0042,
+     "alts": [
+      [
+       "tomorow",
+       "copy",
+       -14.0991,
+       3.7944,
+       -17.7201,
+       -16.0723
+      ],
+      [
+       "tomorrow",
+       "greedy",
+       0.0,
+       -0.1175,
+       -9.8063,
+       0.0
+      ],
+      [
+       "tomorrows",
+       "word",
+       -19.5163,
+       -4.7225,
+       -15.0003,
+       -15.5273
+      ],
+      [
+       "tomorrow's",
+       "word",
+       -9.7637,
+       -5.6388,
+       -13.4336,
+       -14.4521
+      ],
+      [
+       "totoro",
+       "word",
+       -21.616,
+       -15.5691,
+       -15.3764,
+       -15.8643
+      ],
+      [
+       "tomatoe",
+       "word",
+       0.0,
+       -16.1433,
+       -15.4438,
+       -15.6152
+      ],
+      [
+       "doctorow",
+       "word",
+       0.0,
+       -17.9127,
+       -13.958,
+       -15.8877
+      ],
+      [
+       "tomoe",
+       "word",
+       0.0,
+       -17.2711,
+       -15.9861,
+       -17.2627
+      ],
+      [
+       "woodrow",
+       "word",
+       0.0,
+       -18.7975,
+       -14.3969,
+       -16.1826
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "input": "thx for the help yesterday i realy apreciate it",
+   "style": "formal",
+   "constrained_greedy": "Thank you for the help yesterday; I really appreciate it.",
+   "blocked_steps": 0,
+   "fast_path": false,
+   "auto_text": "Thx for the help yesterday; I really appreciate it.",
+   "auto": [
+    {
+     "typed": "realy",
+     "to": "really",
+     "margin": 25.372
+    },
+    {
+     "typed": "apreciate",
+     "to": "appreciate",
+     "margin": 18.528
+    }
+   ],
+   "suggest": [
+    {
+     "typed": "thx",
+     "to": "Thank you",
+     "margin": -7.092
+    }
+   ],
+   "plans": [
+    {
+     "typed": "thx",
+     "greedy_word": "Thank you",
+     "nonword": false,
+     "name_like": false,
+     "j": 0,
+     "span": [
+      0,
+      9
+     ],
+     "changed": true,
+     "rare": true,
+     "rank": 10588,
+     "wlp": -0.0538,
+     "alts": [
+      [
+       "Thx",
+       "copy",
+       -10.3026,
+       1.6262,
+       -12.2968,
+       -3.3457
+      ],
+      [
+       "Thank you",
+       "greedy",
+       0.0,
+       -28.5082,
+       -11.6521,
+       0.0
+      ],
+      [
+       "The",
+       "word",
+       -17.2086,
+       -7.2727,
+       -3.1822,
+       -6.458
+      ],
+      [
+       "Thc",
+       "word",
+       -18.4319,
+       -3.8948,
+       -12.5067,
+       -14.9502
+      ],
+      [
+       "Thnx",
+       "word",
+       -17.0552,
+       -2.9787,
+       -14.6049,
+       -5.5889
+      ],
+      [
+       "Kthx",
+       "word",
+       0.0,
+       -2.9789,
+       -15.9861,
+       -16.0879
+      ],
+      [
+       "Tax",
+       "word",
+       0.0,
+       -7.2726,
+       -9.044,
+       -9.208
+      ],
+      [
+       "Thz",
+       "word",
+       0.0,
+       -3.8948,
+       -16.027,
+       -20.8545
+      ],
+      [
+       "Tho",
+       "word",
+       0.0,
+       -7.2727,
+       -10.465,
+       -12.0312
+      ],
+      [
+       "Th",
+       "word",
+       0.0,
+       -8.8385,
+       -8.6249,
+       -11.0791
+      ]
+     ]
+    },
+    {
+     "typed": "realy",
+     "greedy_word": "really",
+     "nonword": true,
+     "name_like": false,
+     "j": 6,
+     "span": [
+      36,
+      42
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0035,
+     "alts": [
+      [
+       "realy",
+       "copy",
+       -19.2148,
+       2.7103,
+       -17.7201,
+       -16.2256
+      ],
+      [
+       "really",
+       "greedy",
+       0.0,
+       -1.2016,
+       -6.0271,
+       0.0
+      ],
+      [
+       "relay",
+       "word",
+       -15.3312,
+       -2.4058,
+       -12.3883,
+       -19.8916
+      ],
+      [
+       "realty",
+       "word",
+       -13.7811,
+       -1.8908,
+       -13.8967,
+       -20.4443
+      ],
+      [
+       "ready",
+       "word",
+       -15.3971,
+       -6.1885,
+       -8.9985,
+       -17.457
+      ],
+      [
+       "reply",
+       "word",
+       0.0,
+       -6.1885,
+       -9.5303,
+       -15.6699
+      ],
+      [
+       "reality",
+       "word",
+       0.0,
+       -6.4957,
+       -9.1412,
+       -18.6816
+      ],
+      [
+       "real",
+       "word",
+       0.0,
+       -7.7544,
+       -7.7906,
+       -17.5684
+      ],
+      [
+       "greatly",
+       "word",
+       0.0,
+       -6.4996,
+       -10.6168,
+       -2.7471
+      ]
+     ]
+    },
+    {
+     "typed": "apreciate",
+     "greedy_word": "appreciate",
+     "nonword": true,
+     "name_like": false,
+     "j": 7,
+     "span": [
+      43,
+      53
+     ],
+     "changed": true,
+     "rare": false,
+     "rank": -1,
+     "wlp": -0.0008,
+     "alts": [
+      [
+       "apreciate",
+       "copy",
+       -8.744,
+       4.8785,
+       -17.7201,
+       -23.4795
+      ],
+      [
+       "appreciate",
+       "greedy",
+       0.0,
+       0.9666,
+       -8.7309,
+       0.0
+      ],
+      [
+       "appreciated",
+       "word",
+       -10.3098,
+       -3.6384,
+       -10.699,
+       -5.8125
+      ],
+      [
+       "appreciates",
+       "word",
+       -16.0078,
+       -3.6384,
+       -12.8594,
+       -12.7168
+      ],
+      [
+       "preciate",
+       "word",
+       -19.434,
+       -5.5859,
+       -16.3718,
+       -24.4111
+      ],
+      [
+       "depreciate",
+       "word",
+       0.0,
+       -7.9334,
+       -14.4776,
+       -22.0439
+      ],
+      [
+       "appriciate",
+       "word",
+       0.0,
+       -7.9254,
+       -16.027,
+       -23.2617
+      ],
+      [
+       "predicate",
+       "word",
+       0.0,
+       -15.2845,
+       -13.8367,
+       -21.5439
+      ],
+      [
+       "deprecate",
+       "word",
+       0.0,
+       -18.369,
+       -15.5807,
+       -22.833
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -88,9 +88,13 @@ final class M3Tests: XCTestCase {
         let P = M3Params.from(json: vf["params"] as! [String: Any])
         let model = try M3Model(encoder: p.enc, decoder: p.dec, meta: M3Meta(), threads: 2)
         defer { model.close() }
-        let lm: M3WordLM? = nil
-        if P.b != 0 { XCTFail("params use the n-gram (b \(P.b)): reader not wired yet") }
-        let c = M3Corrector(model: model, tok: Fixtures.tokM2, lexicon: Self.lexicon, params: P, lm: lm)
+        let lm: M3WordLM? = try (P.b != 0 ? M3Trigram(path: Fixtures.modelPath("m3_ngram.bin")) : nil)
+        // the shipped delete index when the model dir has it (the candidate test covers the one built on device)
+        let ss = ((ProcessInfo.processInfo.environment["AC_MODEL_DIR"] ?? "") as NSString).appendingPathComponent("m3_symspell.bin")
+        let lexicon = FileManager.default.fileExists(atPath: ss)
+            ? M3Lexicon(lex: Self.lexicon.lex, symspell: try Data(contentsOf: URL(fileURLWithPath: ss))) : Self.lexicon
+        print("m3 vectors: delete index \(lexicon.indexSource)")
+        let c = M3Corrector(model: model, tok: Fixtures.tokM2, lexicon: lexicon, params: P, lm: lm)
         var fails = 0, n = 0
         var worst = 0.0
         var lines: [String] = []
@@ -112,6 +116,13 @@ final class M3Tests: XCTestCase {
                     if g.typed != w["typed"] as! String || g.outWord != w["greedy_word"] as! String || g.nonword != w["nonword"] as! Bool
                         || g.nameLike != w["name_like"] as! Bool {
                         why.append("plan \(g.typed)/\(g.outWord) nonword \(g.nonword) name \(g.nameLike) want \(w["typed"]!)/\(w["greedy_word"]!)"); continue
+                    }
+                    if let wj = w["j"] as? NSNumber, let ws = w["span"] as? [NSNumber], let wc = w["changed"] as? Bool, let wr = w["rare"] as? Bool,
+                       let wk = w["rank"] as? NSNumber, let wl = w["wlp"] as? NSNumber {
+                        if g.j != wj.intValue || [g.span.0, g.span.1] != ws.map({ $0.intValue }) || g.changed != wc || g.rare != wr
+                            || g.rank != wk.intValue || abs(g.wlp - wl.doubleValue) > 2e-3 {
+                            why.append("plan \(g.typed): j \(g.j) span \(g.span) changed \(g.changed) rare \(g.rare) rank \(g.rank) wlp \(g.wlp) want \(wj) \(ws) \(wc) \(wr) \(wk) \(wl)")
+                        }
                     }
                     let wa = w["alts"] as! [[Any]]
                     if wa.count != g.alts.count { why.append("plan \(g.typed): \(g.alts.map { $0.text }) want \(wa.map { $0[0] })"); continue }

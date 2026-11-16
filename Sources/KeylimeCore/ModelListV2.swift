@@ -68,7 +68,7 @@ public enum ModelListV2 {
             let fs = files(m["files"])
             guard !fs.isEmpty else { continue }
             out.append(V2Model(id: id, type: type, label: m["label"] as? String ?? id, replaces: m["replaces"] as? String, files: fs,
-                               config: m["config"] as? [String: Any] ?? [:], params: m["params"] as? [String: Any] ?? [:],
+                               config: m["config"] as? [String: Any] ?? m["m3"] as? [String: Any] ?? [:], params: m["params"] as? [String: Any] ?? [:],
                                baseUrls: ModelMirrors.baseUrls(m)))
         }
         return out

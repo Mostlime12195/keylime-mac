@@ -20,7 +20,7 @@ Apple Silicon only, macOS 13+.
    `xattr -dr com.apple.quarantine /Applications/Keylime.app` and open it normally.
 4. Grant **Accessibility** when asked (System Settings → Privacy & Security → Accessibility). Remove an old
    "Autocorrect" entry if there is one. The setup window closes by itself once it's on.
-5. The model downloads on first run from Hugging Face (about 79 MB for m2, 42 MB for m1).
+5. The model downloads on first run from Hugging Face (about 79 MB for m2; m3 is about 105 MB with its dictionary files).
 
 From 0.2.0 on, updates install themselves (menu → Check for Updates…, or the daily check) and keep the Accessibility
 grant: every build is signed with the same certificate.
@@ -34,12 +34,13 @@ grant: every build is signed with the same certificate.
   that came after it.
 - Click an underlined word: up to 3 fixes, **Ignore**, **Add to Dictionary**.
 - Optional: a preview bubble with the fix the current word is about to get (Space accepts, Esc cancels).
-- **Style** (Settings → General, m2 only): Casual, Standard or Formal. Casual keeps "i" in lowercase. Formal adds
+- **Style** (Settings → General, m2 and m3; with m3 only the model's style token changes, no added capitals or commas): Casual, Standard or Formal. Casual keeps "i" in lowercase. Formal adds
   capitals at the start of a sentence and commas while you type. It also adds full stops after a pause. Formal changes
   the text only in the "Fix confident typos" mode. A new style starts to work immediately.
 - Settings can turn off macOS's own "Correct spelling automatically" so the two don't fight (open apps may need a
   restart).
-- Menu: mode, pause in the current app, model (m2 106M int4 default, m1 34M lighter), personal dictionary and excluded
+- Menu: mode, pause in the current app, model (m2 106M int4 default; m3 62M int4, a whole-sentence model with a
+  dictionary-aware decoder that decides which fixes to apply and which to underline), personal dictionary and excluded
   apps, updates. Terminals, IDEs and password managers are excluded by default; password fields and secure input are
   always skipped.
 
@@ -63,4 +64,4 @@ requirement is certificate-based, self-tests the bundle and attaches the zip to 
 
 ## License
 
-Code: MIT (see `LICENSE`). Model weights on Hugging Face ([keylime-m2-preview](https://huggingface.co/MostLime/keylime-m2-preview), [keylime-m1-preview](https://huggingface.co/MostLime/keylime-m1-preview)): CC BY 4.0.
+Code: MIT (see `LICENSE`). Model weights on Hugging Face ([keylime-m2-preview](https://huggingface.co/MostLime/keylime-m2-preview), [keylime-m3-preview](https://huggingface.co/MostLime/keylime-m3-preview), [keylime-m1-preview](https://huggingface.co/MostLime/keylime-m1-preview)): CC BY 4.0.

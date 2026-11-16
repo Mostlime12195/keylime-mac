@@ -182,11 +182,12 @@ enum SelfTest {
         func u(_ f: ModelFile) -> String { dir.appendingPathComponent(f.file).path }
         for f in s.files where !FileManager.default.fileExists(atPath: u(f)) { print("skip \(spec.id): no \(f.file)"); return 0 }
         var t0 = Date()
-        let lex = try M3Lexicon(path: u(s.lexicon))
-        print(String(format: "%@: lexicon %d words + delete index in %.2f s", spec.id, lex.lex.size, Date().timeIntervalSince(t0)))
+        let lex = try M3Lexicon(path: u(s.lexicon), symspell: s.symspell.map { u($0) })
+        print(String(format: "%@: lexicon %d words + delete index (%@) in %.2f s", spec.id, lex.lex.size, lex.indexSource, Date().timeIntervalSince(t0)))
         t0 = Date()
         let model = try M3Model(encoder: u(s.encoder), decoder: u(s.decoder), meta: s.meta, threads: 4)
-        let c = M3Corrector(model: model, tok: try SPTokenizer.fromJSON(Data(contentsOf: URL(fileURLWithPath: u(s.vocab)))), lexicon: lex, params: s.params)
+        let c = M3Corrector(model: model, tok: try SPTokenizer.fromJSON(Data(contentsOf: URL(fileURLWithPath: u(s.vocab)))), lexicon: lex, params: s.params,
+                             lm: try (s.params.b != 0 ? s.ngram.map { try M3Trigram(path: u($0)) } : nil))
         print(String(format: "%@: sessions in %.2f s; params th_auto %.4f th_sugg %.4f b %.2f", spec.id, Date().timeIntervalSince(t0),
                      s.params.thAuto, s.params.thSugg, s.params.b))
         defer { model.close() }

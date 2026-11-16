@@ -186,13 +186,14 @@ final class EngineHost {
         let lex: M3Lexicon
         if let c = m3Lex, c.path == lp { lex = c.lex } else {
             let t0 = Date()
-            lex = try M3Lexicon(path: lp)
+            lex = try M3Lexicon(path: lp, symspell: s.symspell.map { url($0).path })
             m3Lex = (lp, lex)
-            log.info("m3 lexicon \(lex.lex.size) words + delete index in \(Date().timeIntervalSince(t0))s")
+            log.info("m3 lexicon \(lex.lex.size) words + delete index (\(lex.indexSource)) in \(Date().timeIntervalSince(t0))s")
         }
         let model = try M3Model(encoder: url(s.encoder).path, decoder: url(s.decoder).path, meta: s.meta, threads: threads)
-        // TRIGRAM: the n-gram term (params b) once its file format is settled; off until then
-        let lm: M3WordLM? = nil
+        // the n-gram term (params b): m3_ngram.bin, memory-mapped
+        var lm: M3WordLM? = nil
+        if let ng = s.ngram, s.params.b != 0 { lm = try M3Trigram(path: url(ng).path) }
         return M3Corrector(model: model, tok: tok, lexicon: lex, params: s.params, lm: lm)
     }
 
