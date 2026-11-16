@@ -80,12 +80,26 @@ public final class OrtSessionHandle {
             throw EngineError.ort(String(cString: err))
         }
         s = h
+        inputNames = Self.names(h)
+    }
+
+    /// a session from graph bytes (.onnx, fully optimized; the bytes are only read during the call)
+    public init(bytes: Data, threads: Int) throws {
+        var err = [CChar](repeating: 0, count: 1024)
+        let errLen = err.count
+        let h = bytes.withUnsafeBytes { raw in ac_session_open_bytes(raw.baseAddress, raw.count, Int32(threads), &err, errLen) }
+        guard let h = h else { throw EngineError.ort(String(cString: err)) }
+        s = h
+        inputNames = Self.names(h)
+    }
+
+    private static func names(_ h: OpaquePointer) -> [String] {
         var names: [String] = []
         for i in 0..<ac_session_input_count(h) {
             var buf = [CChar](repeating: 0, count: 256)
             if ac_session_input_name(h, i, &buf, 256) == 0 { names.append(String(cString: buf)) }
         }
-        inputNames = names
+        return names
     }
 
     public static var ortVersion: String { String(cString: ac_ort_version()) }

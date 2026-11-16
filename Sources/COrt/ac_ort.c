@@ -81,6 +81,28 @@ fail:
     return NULL;
 }
 
+AcSession *ac_session_open_bytes(const void *bytes, size_t len, int threads, char *err, size_t errlen) {
+    pthread_once(&g_once, init_once);
+    if (!g_api || !g_env) { snprintf(err, errlen, "onnxruntime init failed (API version %d)", ORT_API_VERSION); return NULL; }
+    if (!bytes || !len) { snprintf(err, errlen, "empty graph"); return NULL; }
+    AcSession *s = calloc(1, sizeof(AcSession));
+    OrtSessionOptions *opts = NULL;
+    TRY(g_api->CreateSessionOptions(&opts));
+    TRY(g_api->SetIntraOpNumThreads(opts, threads));
+    TRY(g_api->SetInterOpNumThreads(opts, 1));
+    TRY(g_api->AddSessionConfigEntry(opts, "session.intra_op.allow_spinning", "0"));
+    TRY(g_api->SetSessionGraphOptimizationLevel(opts, ORT_ENABLE_ALL));
+    // an .onnx graph is parsed into the session's own memory: the bytes aren't needed afterwards
+    TRY(g_api->CreateSessionFromArray(g_env, bytes, len, opts, &s->session));
+    TRY(g_api->CreateCpuMemoryInfo(OrtArenaAllocator, OrtMemTypeDefault, &s->mem));
+    g_api->ReleaseSessionOptions(opts);
+    return s;
+fail:
+    if (opts) g_api->ReleaseSessionOptions(opts);
+    ac_session_close(s);
+    return NULL;
+}
+
 static size_t elem_size(int type) {
     switch (type) {
         case AC_FLOAT: case AC_INT32: return 4;

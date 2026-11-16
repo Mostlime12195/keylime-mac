@@ -195,6 +195,8 @@ enum SelfTest {
                              lm: try (s.params.b != 0 ? s.ngram.map { try M3Trigram(path: u($0)) } : nil))
         print(String(format: "%@: sessions in %.2f s; params th_auto %.4f th_sugg %.4f b %.2f", spec.id, Date().timeIntervalSince(t0),
                      s.params.thAuto, s.params.thSugg, s.params.b))
+        check(model.patchedEncoder == 65 && model.patchedDecoder == 28,
+              "MatMulNBits accuracy_level \(M3Model.ACCURACY_LEVEL) patched into encoder \(model.patchedEncoder)/65, decoder \(model.patchedDecoder)/28")
         defer { model.close() }
         let texts = ["can you send me teh file when you get a chance", "thanks for the help", "I may take the oppurtunity to run some errands.",
                      "we shoudl meet at 3pm on Fridya", "dont worry ill be there in a minuite", "Thsi is teh best plce in toen"]

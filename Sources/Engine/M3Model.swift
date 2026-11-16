@@ -52,10 +52,49 @@ public final class M3Model {
         var pos: Int
     }
 
-    public init(encoder: String, decoder: String, meta: M3Meta, threads: Int) throws {
+    /// MatMulNBits accuracy_level the graphs run with: 4 = int8 activations against the same int4 weights (the graphs are
+    /// stored with 0, fp32 dequantization, several times slower per step); test vectors are made with 4
+    public static let ACCURACY_LEVEL = 4
+    /// MatMulNBits nodes patched at load (65 encoder, 28 decoder for m3)
+    public private(set) var patchedEncoder = 0
+    public private(set) var patchedDecoder = 0
+
+    /// the serialized attribute: name "accuracy_level" (field 1), then its int value 0 (field 3)
+    static let ACC_PATTERN: [UInt8] = [0x0a, 0x0e] + Array("accuracy_level".utf8) + [0x18, 0x00]
+
+    /// graph bytes with every MatMulNBits accuracy_level 0 set to `level` (one byte; protobuf lengths unchanged) and the
+    /// number of nodes changed (onnx_backend.with_accuracy_level / Android M3Model.withAccuracyLevel)
+    public static func withAccuracyLevel(_ graph: Data, _ level: Int) -> (Data, Int) {
+        var b = Data(graph)   // one heap copy of the mapped file
+        let p = ACC_PATTERN, n = b.count, m = p.count
+        var count = 0
+        var i = 0
+        b.withUnsafeMutableBytes { (raw: UnsafeMutableRawBufferPointer) in
+            let buf = raw.bindMemory(to: UInt8.self)
+            while i <= n - m {
+                if buf[i] == p[0] && buf[i + m - 1] == p[m - 1] && buf[i + 2] == p[2] {
+                    var ok = true
+                    for j in 1..<m where buf[i + j] != p[j] { ok = false; break }
+                    if ok { buf[i + m - 1] = UInt8(level); count += 1; i += m; continue }
+                }
+                i += 1
+            }
+        }
+        return (b, count)
+    }
+
+    public init(encoder: String, decoder: String, meta: M3Meta, threads: Int, accuracyLevel: Int = M3Model.ACCURACY_LEVEL) throws {
         self.meta = meta
-        enc = try OrtSessionHandle(path: encoder, threads: threads, ortFormat: encoder.hasSuffix(".ort"))
-        dec = try OrtSessionHandle(path: decoder, threads: threads, ortFormat: decoder.hasSuffix(".ort"))
+        if accuracyLevel != 0 {
+            let (e, ne) = Self.withAccuracyLevel(try Data(contentsOf: URL(fileURLWithPath: encoder), options: .alwaysMapped), accuracyLevel)
+            enc = try OrtSessionHandle(bytes: e, threads: threads)
+            let (d, nd) = Self.withAccuracyLevel(try Data(contentsOf: URL(fileURLWithPath: decoder), options: .alwaysMapped), accuracyLevel)
+            dec = try OrtSessionHandle(bytes: d, threads: threads)
+            patchedEncoder = ne; patchedDecoder = nd
+        } else {
+            enc = try OrtSessionHandle(path: encoder, threads: threads, ortFormat: encoder.hasSuffix(".ort"))
+            dec = try OrtSessionHandle(path: decoder, threads: threads, ortFormat: decoder.hasSuffix(".ort"))
+        }
         stateNames = dec.inputNames.filter { $0.hasPrefix("past_") && $0 != "past_mask" }.map { String($0.dropFirst(5)) }
     }
 

@@ -69,6 +69,21 @@ final class M3Tests: XCTestCase {
         XCTAssertTrue(run([" dont"]).0, "casual contractions stay legal")
     }
 
+    /// the byte patch: every accuracy_level 0 attribute -> 4, nothing else touched
+    func testAccuracyPatch() {
+        let attr = M3Model.ACC_PATTERN
+        let g = Data([1, 2, 3]) + Data(attr) + Data([9]) + Data(attr) + Data(attr.dropLast()) + Data([4])
+        let (out, n) = M3Model.withAccuracyLevel(g, 4)
+        XCTAssertEqual(n, 2)
+        XCTAssertEqual(out.count, g.count)
+        XCTAssertEqual(out[3 + attr.count - 1], 4)
+        XCTAssertEqual(out[3 + attr.count + 1 + attr.count - 1], 4)
+        XCTAssertEqual(out[out.count - 1], 4, "the third copy is cut short: its trailing byte is not an attribute value")
+        XCTAssertEqual(out[out.count - 2], attr[attr.count - 2])
+        XCTAssertEqual(M3Model.withAccuracyLevel(out, 4).1, 0, "already patched")
+        XCTAssertEqual(Array(out.prefix(3)), [1, 2, 3])
+    }
+
     // MARK: end to end
 
     struct Paths { let enc: String; let dec: String }
@@ -86,8 +101,13 @@ final class M3Tests: XCTestCase {
         let p = try paths()
         let vf = Fixtures.json("m3_vectors.json") as! [String: Any]
         let P = M3Params.from(json: vf["params"] as! [String: Any])
-        let model = try M3Model(encoder: p.enc, decoder: p.dec, meta: M3Meta(), threads: 2)
+        let acc = (vf["accuracy_level"] as? NSNumber)?.intValue ?? 0
+        XCTAssertEqual(acc, M3Model.ACCURACY_LEVEL, "vectors made with the accuracy level the app runs")
+        let model = try M3Model(encoder: p.enc, decoder: p.dec, meta: M3Meta(), threads: 2, accuracyLevel: acc)
         defer { model.close() }
+        print("m3 vectors: accuracy_level \(acc), MatMulNBits patched encoder \(model.patchedEncoder) decoder \(model.patchedDecoder)")
+        XCTAssertEqual(model.patchedEncoder, 65, "encoder MatMulNBits nodes")
+        XCTAssertEqual(model.patchedDecoder, 28, "decoder MatMulNBits nodes")
         let lm: M3WordLM? = try (P.b != 0 ? M3Trigram(path: Fixtures.modelPath("m3_ngram.bin")) : nil)
         // the shipped delete index when the model dir has it (the candidate test covers the one built on device)
         let ss = ((ProcessInfo.processInfo.environment["AC_MODEL_DIR"] ?? "") as NSString).appendingPathComponent("m3_symspell.bin")

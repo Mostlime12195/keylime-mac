@@ -191,6 +191,7 @@ final class EngineHost {
             log.info("m3 lexicon \(lex.lex.size) words + delete index (\(lex.indexSource)) in \(Date().timeIntervalSince(t0))s")
         }
         let model = try M3Model(encoder: url(s.encoder).path, decoder: url(s.decoder).path, meta: s.meta, threads: threads)
+        log.info("m3 MatMulNBits accuracy_level \(M3Model.ACCURACY_LEVEL): patched encoder \(model.patchedEncoder) (65), decoder \(model.patchedDecoder) (28)")
         // the n-gram term (params b): m3_ngram.bin, memory-mapped
         var lm: M3WordLM? = nil
         if let ng = s.ngram, s.params.b != 0 { lm = try M3Trigram(path: url(ng).path) }

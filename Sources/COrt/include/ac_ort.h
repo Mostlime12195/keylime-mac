@@ -32,6 +32,8 @@ typedef struct {
 
 /// ort_format: the file is a pre-optimized .ort graph (no runtime optimization, initializers used from the mapping).
 AcSession *ac_session_open(const char *path, int threads, int ort_format, char *err, size_t errlen);
+/// a session from graph bytes (.onnx, fully optimized); the bytes are only read during the call
+AcSession *ac_session_open_bytes(const void *bytes, size_t len, int threads, char *err, size_t errlen);
 int ac_session_run(AcSession *s, const AcInput *inputs, size_t n_inputs, const char *const *output_names,
                    size_t n_outputs, AcOutput *outputs, char *err, size_t errlen);
 void ac_outputs_free(AcOutput *outputs, size_t n);
