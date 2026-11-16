@@ -67,8 +67,13 @@ struct Manifest {
     let defaultId: String
     let models: [ModelSpec]
 
+    /// replaced models[] id -> the models_v2 id that took its place (block4 -> m3)
+    var replaced: [String: String] = [:]
+
+    /// the saved pick's model: itself, its replacement (a saved m1 pick -> m3), else the default
     func spec(_ id: String?) -> ModelSpec? {
-        models.first { $0.id == (id ?? defaultId) } ?? models.first { $0.id == defaultId } ?? models.first
+        let r = ModelListV2.resolve(id, ids: models.map { $0.id }, replaced: replaced, defaultId: defaultId)
+        return models.first { $0.id == r } ?? models.first
     }
 
     static func parse(_ data: Data, appVersion: String = Updater.currentVersion) throws -> Manifest {
@@ -109,10 +114,11 @@ struct Manifest {
                                 baseUrls: v.baseUrls, m3: m3))
         }
         let all = models + v2
+        let replaced = ModelListV2.replacements(v2m.filter { m in v2.contains { $0.id == m.id } })
         let order = ModelListV2.order(models.map { $0.id }, v2m.filter { m in v2.contains { $0.id == m.id } })
         models = order.compactMap { id in all.first { $0.id == id } }
         return Manifest(updated: o["updated"] as? String ?? "", baseUrls: o["base_urls"] as? [String] ?? [(o["base_url"] as? String) ?? ""],
-                        defaultId: o["default"] as? String ?? models[0].id, models: models)
+                        defaultId: o["default"] as? String ?? models[0].id, models: models, replaced: replaced)
     }
 }
 

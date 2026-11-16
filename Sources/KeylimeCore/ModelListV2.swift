@@ -74,6 +74,23 @@ public enum ModelListV2 {
         return out
     }
 
+    /// replaced models[] id -> the v2 entry that replaces it (block4 -> m3)
+    public static func replacements(_ v2: [V2Model]) -> [String: String] {
+        var m: [String: String] = [:]
+        for r in v2 { if let x = r.replaces, m[x] == nil { m[x] = r.id } }
+        return m
+    }
+
+    /// The model a saved pick means: itself when it's listed; a replaced id (m1's block4) -> its replacement (m3);
+    /// anything else (or no pick) -> the default, else the first listed.
+    public static func resolve(_ id: String?, ids: [String], replaced: [String: String], defaultId: String) -> String? {
+        if let i = id {
+            if ids.contains(i) { return i }
+            if let r = replaced[i], ids.contains(r) { return r }
+        }
+        return ids.contains(defaultId) ? defaultId : ids.first
+    }
+
     /// Picker order: models[] ids with each replaced one swapped for its v2 entry; v2 entries that replace nothing (or
     /// an id that isn't there) go last.
     public static func order(_ ids: [String], _ v2: [V2Model]) -> [String] {

@@ -42,6 +42,22 @@ final class M3PolicyTests: XCTestCase {
         XCTAssertEqual(d.first?.file("lexicon")?.file, "l.tsv")
     }
 
+    /// a saved m1 pick (block4) means m3 once m3 replaces it; m2 stays the default; unknown picks fall back to it
+    func testReplacedPick() {
+        let v2 = ModelListV2.parse(manifest, appVersion: "0.2.17")
+        let rep = ModelListV2.replacements(v2)
+        XCTAssertEqual(rep, ["block4": "m3"])
+        let ids = ModelListV2.order(["m2s_int4", "block4"], v2)
+        func spec(_ id: String?) -> String? { ModelListV2.resolve(id, ids: ids, replaced: rep, defaultId: "m2s_int4") }
+        XCTAssertEqual(spec("block4"), "m3")
+        XCTAssertEqual(spec(nil), "m2s_int4", "m3 is never the default")
+        XCTAssertEqual(spec("m2s_int4"), "m2s_int4")
+        XCTAssertEqual(spec("m3"), "m3")
+        XCTAssertEqual(spec("gone"), "m2s_int4")
+        // an app too old for the v2 entry keeps block4
+        XCTAssertEqual(ModelListV2.resolve("block4", ids: ["m2s_int4", "block4"], replaced: [:], defaultId: "m2s_int4"), "block4")
+    }
+
     func outcome(_ tier: M3Tier, typed: String = "teh", out: String = "the", recheck: String? = nil) -> WordOutcome {
         WordOutcome(typed: typed, out: out, margin: 1, gap: 1, fixes: out == typed ? [] : [out, "ten"], recheck: recheck, typedOOV: true, tier: tier)
     }

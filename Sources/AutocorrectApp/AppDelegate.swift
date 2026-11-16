@@ -96,6 +96,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             refreshIcon()
             return
         }
+        // a saved pick of a replaced model (m1) now means its replacement (m3): remember that from now on
+        if let saved = settings.modelId, saved != spec.id, manifest.replaced[saved] == spec.id { settings.modelId = spec.id }
         if !store.isInstalled(spec) {
             do {
                 try await store.install(spec) { [weak self] p in
