@@ -253,10 +253,13 @@ public final class M3Corrector {
         return order.map { (p.alts[ks[$0]].text, sc[$0]) }
     }
 
+    /// tune.casual_filter: casual keeps apostrophe-less contractions. A typed one (CASUAL_OK, no apostrophe) is never a
+    /// correction site (its slot is dropped); elsewhere alternatives that only add or move apostrophes are dropped.
     static func casualFilter(_ plans: [M3Plan]) -> [M3Plan] {
-        plans.map { p in
+        plans.compactMap { p -> M3Plan? in
             var q = p
             let t = M3Text.lower(M3Text.string(p.typed.unicodeScalars.filter { $0 != "'" }))
+            if !p.typed.contains("'") && M3_CASUAL_OK.contains(t) { return nil }
             q.alts = p.alts.filter { $0.kind == "copy" || $0.kind == "greedy" || M3Text.lower(M3Text.string($0.text.unicodeScalars.filter { $0 != "'" })) != t }
             return q
         }

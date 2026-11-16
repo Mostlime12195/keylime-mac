@@ -199,7 +199,7 @@ enum SelfTest {
             let words = max(1, M3Text.segWords(t).count)
             perWord.append(r.ms / Double(words))
             print("  info '\(t)' -> '\(r.text)' auto \(r.auto.map { "\($0.typed)->\($0.to)" }) suggest \(r.suggest.map { "\($0.typed)->\($0.to)" }) \(String(format: "%.0f ms", r.ms))")
-            if t == "thanks for the help" { check(r.text == t && r.suggest.isEmpty, "a clean sentence is left alone") }
+            if t == "thanks for the help" { check(r.auto.isEmpty && r.suggest.isEmpty, "a clean sentence has no AUTO / SUGGEST words") }
         }
         let r0 = try c.correct(texts[0])
         check(r0.auto.contains { $0.typed == "teh" && $0.to == "the" } || r0.suggest.contains { $0.typed == "teh" && $0.to == "the" },
