@@ -55,6 +55,11 @@ enum SelfTest {
             print(String(format: "lexicon %d words + generators in %.2f s", lex.size, Date().timeIntervalSince(t0)))
             let manifest = try Manifest.parse(Data(contentsOf: dir.appendingPathComponent("manifest.json")))
             var failed = 0
+            if let rep = manifest.replaced["block4"] {
+                let ok = manifest.spec("block4")?.id == rep && manifest.spec(nil)?.id == manifest.defaultId && rep != manifest.defaultId
+                if !ok { failed += 1 }
+                print("  \(ok ? "ok  " : "FAIL") picker \(manifest.models.map { $0.id }), a saved block4 pick -> \(manifest.spec("block4")?.id ?? "nil"), default \(manifest.spec(nil)?.id ?? "nil")")
+            }
             for spec in manifest.models {
                 if spec.m3 != nil { failed += try m3(spec, dir); continue }
                 let g = dir.appendingPathComponent(spec.graph.file), v = dir.appendingPathComponent(spec.vocab.file)
