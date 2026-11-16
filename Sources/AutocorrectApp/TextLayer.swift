@@ -1005,7 +1005,7 @@ final class TextLayer {
                         let len = (fx.from as NSString).length
                         let userWord = self.engine.user.has(fx.from) || self.ignored.contains(fx.from.lowercased())
                         switch Policy.idle(gap: fx.gap, spelling: spelling, mode: self.settings.mode,
-                                           inCurrentSentence: current && a + len <= snap.caret, userWord: userWord) {
+                                           inCurrentSentence: current && a + len <= snap.caret, userWord: userWord, tier: fx.tier) {
                         case .apply where !typing: applies.append((NSRange(location: a, length: len), fx.from, fx.to, fx.fixes, fx.gap, spelling))
                         case .apply: fallthrough   // no text changes while typing: underline it instead
                         case .flag:

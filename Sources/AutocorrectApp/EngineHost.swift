@@ -13,6 +13,10 @@ final class EngineHost {
     // engine queue only
     private var corrector: Corrector?
     private var scorer: NeuralScorer?
+    /// m3 (models_v2 m3dict): replaces the scorer + corrector path while loaded
+    private var m3: M3Corrector?
+    /// loader queue only: the m3 lexicon + delete index, kept across reloads of the same file
+    private var m3Lex: (path: String, lex: M3Lexicon)?
     private var params = DecodeParams.fallback
     private var spec: ModelSpec?
 
@@ -121,14 +125,30 @@ final class EngineHost {
     func rankOnQueue(_ w: String) -> Int? { corrector?.lex.index[w.lowercased()] }
 
     /// Open a model's session (loader queue), then swap it in and warm it up.
-    func load(spec: ModelSpec, graph: URL, vocab: URL, completion: ((Error?) -> Void)? = nil) {
+    func load(spec: ModelSpec, url: @escaping (ModelFile) -> URL, completion: ((Error?) -> Void)? = nil) {
         setStatus("Loading \(spec.label)…", ready: false)
         loadQueue.async {
             do {
                 let t0 = Date()
-                let tok = try SPTokenizer.fromJSON(Data(contentsOf: vocab))
                 let threads = min(4, max(1, ProcessInfo.processInfo.activeProcessorCount / 2))
-                let step = try StepModel.open(path: graph.path, meta: spec.meta, threads: threads)
+                if let m3s = spec.m3 {
+                    let c = try self.openM3(m3s, url: url, threads: threads)
+                    _ = try c.correct("hello tehre", style: "standard")
+                    let secs = Date().timeIntervalSince(t0)
+                    self.queue.async {
+                        self.scorer?.step.close(); self.scorer = nil
+                        self.m3?.model.close(); self.m3 = c
+                        self.spec = spec
+                        self.applyStyleOnQueue()
+                        self.stateLock.lock(); self._modelLabel = spec.label; self._modelId = spec.id; self._maxPos = 0; self.stateLock.unlock()
+                        self.setStatus("Ready · \(spec.label)", ready: true)
+                        self.log.info("m3 \(spec.id) ready in \(secs)s, \(threads) threads")
+                        completion?(nil)
+                    }
+                    return
+                }
+                let tok = try SPTokenizer.fromJSON(Data(contentsOf: url(spec.vocab)))
+                let step = try StepModel.open(path: url(spec.graph).path, meta: spec.meta, threads: threads)
                 self.stateLock.lock(); let st = WritingStyle.effective(self._style, supportsStyle: spec.supportsStyle); self.stateLock.unlock()
                 let sc = NeuralScorer(tok: tok, step: step, styleId: spec.styleToken(st))
                 // how far its positions go (rope table = max_seq): the context setting is clamped under it
@@ -142,6 +162,7 @@ final class EngineHost {
                 let secs = Date().timeIntervalSince(t0)
                 self.queue.async {
                     self.scorer?.step.close()
+                    self.m3?.model.close(); self.m3 = nil
                     self.scorer = sc
                     self.spec = spec
                     self.applyStyleOnQueue()
@@ -156,6 +177,23 @@ final class EngineHost {
                 completion?(error)
             }
         }
+    }
+
+    /// loader queue: tokenizer, lexicon (+ delete index, cached), encoder + decoder sessions
+    private func openM3(_ s: M3Spec, url: (ModelFile) -> URL, threads: Int) throws -> M3Corrector {
+        let tok = try SPTokenizer.fromJSON(Data(contentsOf: url(s.vocab)))
+        let lp = url(s.lexicon).path
+        let lex: M3Lexicon
+        if let c = m3Lex, c.path == lp { lex = c.lex } else {
+            let t0 = Date()
+            lex = try M3Lexicon(path: lp)
+            m3Lex = (lp, lex)
+            log.info("m3 lexicon \(lex.lex.size) words + delete index in \(Date().timeIntervalSince(t0))s")
+        }
+        let model = try M3Model(encoder: url(s.encoder).path, decoder: url(s.decoder).path, meta: s.meta, threads: threads)
+        // TRIGRAM: the n-gram term (params b) once its file format is settled; off until then
+        let lm: M3WordLM? = nil
+        return M3Corrector(model: model, tok: tok, lexicon: lex, params: s.params, lm: lm)
     }
 
     /// Correct one word end (engine queue). The precheck runs first on the engine queue (focused field checks via AX).
@@ -179,6 +217,25 @@ final class EngineHost {
     }
 
     private func correctOnQueue(_ input: WordInput, _ prev: PrevWord?, _ merge: MergeInput?, _ done: (WordResult?, Bool) -> Void) {
+        if let m = m3 {
+            do {
+                // the previous word as it stands in the field (one plain word, or no re-check)
+                var prevTyped: String? = nil
+                if prev != nil {
+                    let l = input.left
+                    let start = l.lastIndex(where: { $0.isWhitespace }).map { l.index(after: $0) } ?? l.startIndex
+                    let last = String(l[start...])
+                    if M3Text.segWords(last) == [last] { prevTyped = last }
+                }
+                let r = try m.correctWord(input, prevTyped: prevTyped, style: effectiveStyle, user: user.all)
+                stateLock.lock(); _lastMs = r.ms; stateLock.unlock()
+                done(r, m.D.inLex(M3Text.lower(input.typed)))
+            } catch {
+                log.error("m3 correction failed: \(String(describing: error))")
+                done(nil, false)
+            }
+            return
+        }
         guard let c = corrector, let sc = scorer else { done(nil, false); return }
         do {
             sc.lastCtxTokens = 0
@@ -197,6 +254,16 @@ final class EngineHost {
         begin()
         queue.async {
             defer { self.end() }
+            if let m = self.m3 {
+                var out: [[(SentenceFix, Bool)]] = []
+                for r in reqs {
+                    if cancelled() { done(nil); return }
+                    guard let fx = try? m.checkSentence(r, style: self.effectiveStyle, user: self.user) else { done(nil); return }
+                    out.append(fx.map { ($0, Policy.isSpellingEdit($0.from, $0.to, typedOOV: !m.D.inLex(M3Text.lower($0.from)))) })
+                }
+                if cancelled() { done(nil); return }
+                done(out); return
+            }
             guard let c = self.corrector, let sc = self.scorer else { done(nil); return }
             var out: [[(SentenceFix, Bool)]] = []
             for r in reqs {

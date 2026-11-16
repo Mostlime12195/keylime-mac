@@ -35,11 +35,13 @@ public struct WordOutcome: Equatable {
     public let typedOOV: Bool
     /// score of the best fix minus the second best (infinity with one fix)
     public let fixGap: Double
+    /// m3: the decoder's own tier (AUTO / SUGGEST / keep) replaces the margin rules; nil for m2 / m1
+    public let tier: M3Tier?
 
     public init(typed: String, out: String, margin: Double, gap: Double, fixes: [String], merge: String? = nil,
-                recheck: String? = nil, typedOOV: Bool, fixGap: Double = .infinity) {
+                recheck: String? = nil, typedOOV: Bool, fixGap: Double = .infinity, tier: M3Tier? = nil) {
         self.typed = typed; self.out = out; self.margin = margin; self.gap = gap; self.fixes = fixes; self.merge = merge
-        self.recheck = recheck; self.typedOOV = typedOOV; self.fixGap = fixGap
+        self.recheck = recheck; self.typedOOV = typedOOV; self.fixGap = fixGap; self.tier = tier
     }
 
     public init(_ r: WordResult, typedOOV: Bool) {
@@ -56,7 +58,7 @@ public struct WordOutcome: Equatable {
         }
         self.init(typed: t, out: r.out, margin: r.margin, gap: gap, fixes: fx.map { $0.0 },
                   merge: r.merge?.to, recheck: r.prevText ?? r.recheck?.to, typedOOV: typedOOV,
-                  fixGap: fx.count > 1 ? fx[0].1 - fx[1].1 : .infinity)
+                  fixGap: fx.count > 1 ? fx[0].1 - fx[1].1 : .infinity, tier: r.m3Tier)
     }
 }
 
@@ -159,6 +161,7 @@ public enum Policy {
             let rc = mode == .auto && hasPrev ? o.recheck.map { TypingCore.keepCase(capIfOn($0, capI, penalty), of: prevOut) } : nil
             return .apply(out: out, prevNew: rc != nil && rc != prevOut ? rc : nil, merged: false)
         }
+        if let tier = o.tier { return m3(o, tier, mode: mode, hasPrev: hasPrev, prevOut: prevOut, penalty: penalty, capI: capI) }
         // re-casing a mixed-case / ALLCAPS word (iPhone -> iphone) is neither a fix nor worth an underline
         if forceNonWords && recasing(o.typed, o.out) && o.merge == nil && o.recheck == nil { return .keep }
         let nw = forceNonWords ? nonWord(o, nameLike: nameLike) : .notApplicable
@@ -193,6 +196,26 @@ public enum Policy {
         return .apply(out: out, prevNew: prevNew, merged: mg != nil)
     }
 
+    /// m3's tiers at a word end: AUTO is applied (auto mode; underlined in suggest mode or when the user undid that
+    /// change before), SUGGEST is underlined, anything else kept. The previous word's AUTO re-check rides along in
+    /// auto mode only.
+    static func m3(_ o: WordOutcome, _ tier: M3Tier, mode: CorrectionMode, hasPrev: Bool, prevOut: String?,
+                   penalty: (String, String) -> Double, capI: Bool) -> Boundary {
+        let flag: Boundary = .flag(fixes: o.fixes, spelling: o.typedOOV || isSpellingEdit(o.typed, o.out, typedOOV: o.typedOOV))
+        let rc = mode == .auto && hasPrev ? o.recheck.map { TypingCore.keepCase(capIfOn($0, capI, penalty), of: prevOut) } : nil
+        let prevNew = rc != nil && rc != prevOut ? rc : nil
+        switch tier {
+        case .keep:
+            return prevNew != nil ? .apply(out: o.typed, prevNew: prevNew, merged: false) : .keep
+        case .suggest:
+            return o.fixes.isEmpty || o.out == o.typed ? .keep : flag
+        case .auto:
+            if o.out == o.typed { return prevNew != nil ? .apply(out: o.typed, prevNew: prevNew, merged: false) : .keep }
+            if mode == .suggest || penalty(o.typed, o.out) > 0 { return flag }
+            return .apply(out: capIfOn(o.out, capI, penalty), prevNew: prevNew, merged: false)
+        }
+    }
+
     /// standalone i -> I unless the style keeps text as typed (casual)
     static func capIfOn(_ s: String, _ on: Bool, _ penalty: (String, String) -> Double) -> String {
         on ? TypingCore.capIWords(s, penalty: penalty) : s
@@ -201,7 +224,13 @@ public enum Policy {
     public enum Idle: Equatable { case none, apply, flag }
 
     /// Stage (c): a sentence fix found after a pause. inCurrentSentence: the sentence the caret is in, before the caret.
-    public static func idle(gap: Double, spelling: Bool, mode: CorrectionMode, inCurrentSentence: Bool, userWord: Bool) -> Idle {
+    /// m3 (tier set): AUTO is applied like a confident spelling fix (auto mode, current sentence), SUGGEST underlined.
+    public static func idle(gap: Double, spelling: Bool, mode: CorrectionMode, inCurrentSentence: Bool, userWord: Bool,
+                            tier: M3Tier? = nil) -> Idle {
+        if let t = tier {
+            if mode == .off || userWord || t == .keep { return .none }
+            return t == .auto && mode == .auto && inCurrentSentence ? .apply : .flag
+        }
         if mode == .off || userWord || gap < FLAG_MARGIN { return .none }
         if mode == .auto && inCurrentSentence && spelling && gap >= IDLE_APPLY_GAP { return .apply }
         return .flag

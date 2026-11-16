@@ -56,6 +56,7 @@ enum SelfTest {
             let manifest = try Manifest.parse(Data(contentsOf: dir.appendingPathComponent("manifest.json")))
             var failed = 0
             for spec in manifest.models {
+                if spec.m3 != nil { failed += try m3(spec, dir); continue }
                 let g = dir.appendingPathComponent(spec.graph.file), v = dir.appendingPathComponent(spec.vocab.file)
                 guard FileManager.default.fileExists(atPath: g.path) else { print("skip \(spec.id): no \(spec.graph.file)"); continue }
                 t0 = Date()
@@ -169,6 +170,59 @@ enum SelfTest {
                 print("  info formal '\(left)' + '\(typed)' -> '\(r.out)'" + (r.prevText.map { ", previous word -> '\($0)'" } ?? ""))
             }
         }
+        return failed
+    }
+
+    /// m3 (models_v2 m3dict) end to end from the bundle's onnxruntime: whole messages, a word end through Policy, the
+    /// pause pass, and ms per word.
+    static func m3(_ spec: ModelSpec, _ dir: URL) throws -> Int {
+        guard let s = spec.m3 else { return 0 }
+        var failed = 0
+        func check(_ ok: Bool, _ what: String) { if !ok { failed += 1 }; print("  \(ok ? "ok  " : "FAIL") \(what)") }
+        func u(_ f: ModelFile) -> String { dir.appendingPathComponent(f.file).path }
+        for f in s.files where !FileManager.default.fileExists(atPath: u(f)) { print("skip \(spec.id): no \(f.file)"); return 0 }
+        var t0 = Date()
+        let lex = try M3Lexicon(path: u(s.lexicon))
+        print(String(format: "%@: lexicon %d words + delete index in %.2f s", spec.id, lex.lex.size, Date().timeIntervalSince(t0)))
+        t0 = Date()
+        let model = try M3Model(encoder: u(s.encoder), decoder: u(s.decoder), meta: s.meta, threads: 4)
+        let c = M3Corrector(model: model, tok: try SPTokenizer.fromJSON(Data(contentsOf: URL(fileURLWithPath: u(s.vocab)))), lexicon: lex, params: s.params)
+        print(String(format: "%@: sessions in %.2f s; params th_auto %.4f th_sugg %.4f b %.2f", spec.id, Date().timeIntervalSince(t0),
+                     s.params.thAuto, s.params.thSugg, s.params.b))
+        defer { model.close() }
+        let texts = ["can you send me teh file when you get a chance", "thanks for the help", "I may take the oppurtunity to run some errands.",
+                     "we shoudl meet at 3pm on Fridya", "dont worry ill be there in a minuite", "Thsi is teh best plce in toen"]
+        var perWord: [Double] = []
+        for t in texts {
+            let r = try c.correct(t)
+            let words = max(1, M3Text.segWords(t).count)
+            perWord.append(r.ms / Double(words))
+            print("  info '\(t)' -> '\(r.text)' auto \(r.auto.map { "\($0.typed)->\($0.to)" }) suggest \(r.suggest.map { "\($0.typed)->\($0.to)" }) \(String(format: "%.0f ms", r.ms))")
+            if t == "thanks for the help" { check(r.text == t && r.suggest.isEmpty, "a clean sentence is left alone") }
+        }
+        let r0 = try c.correct(texts[0])
+        check(r0.auto.contains { $0.typed == "teh" && $0.to == "the" } || r0.suggest.contains { $0.typed == "teh" && $0.to == "the" },
+              "teh -> the is AUTO or SUGGEST")
+        let w = try c.correctWord(WordInput(typed: "teh", left: "can you send me", sep: " "), prevTyped: "me", style: "standard", user: [])
+        let o = WordOutcome(w, typedOOV: true)
+        func name(_ m: CorrectionMode) -> String {
+            switch Policy.boundary(o, mode: m, hasPrev: true, prevOut: "me", userWord: false) {
+            case .keep: return "keep"
+            case .apply(let out, _, _): return "apply \(out)"
+            case .flag(let fx, _): return "flag \(fx)"
+            }
+        }
+        print("  info word end 'teh': tier \(w.m3Tier?.rawValue ?? "nil"), auto mode \(name(.auto)), suggest mode \(name(.suggest))")
+        check(w.m3Tier != nil && w.m3Tier != .keep && name(.suggest).hasPrefix("flag"), "word end: teh is flagged in suggest mode")
+        let fx = try c.checkSentence(SentenceReq(left: "", sentence: " can you send me teh file."), style: "standard", user: nil)
+        check(fx.contains { $0.from == "teh" && $0.to == "the" && $0.start == 17 }, "pause pass finds teh at its offset: \(fx.map { "\($0.from)->\($0.to)@\($0.start) \($0.tier?.rawValue ?? "")" })")
+        // ms per word over more text (whole messages, the warm session)
+        var ms: [Double] = []
+        for _ in 0..<3 { for t in texts { let r = try c.correct(t); ms.append(r.ms / Double(max(1, M3Text.segWords(t).count))) } }
+        ms.sort()
+        print(String(format: "  info m3 ms/word over %d messages: p50 %.1f p95 %.1f (decoder runs %d, ORT %.0f ms total)", ms.count,
+                     ms[ms.count / 2], ms[min(ms.count - 1, ms.count * 95 / 100)], model.decRuns, model.ortSeconds * 1000))
+        _ = perWord
         return failed
     }
 

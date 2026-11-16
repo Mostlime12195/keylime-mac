@@ -7,8 +7,10 @@ public struct SentenceFix: Equatable {
     public let to: String
     public let gap: Double
     public let fixes: [String]
-    public init(start: Int, from: String, to: String, gap: Double, fixes: [String]) {
-        self.start = start; self.from = from; self.to = to; self.gap = gap; self.fixes = fixes
+    /// m3: AUTO / SUGGEST (Policy.idle maps it); nil for the m2 / m1 pass, where the gap decides
+    public let tier: M3Tier?
+    public init(start: Int, from: String, to: String, gap: Double, fixes: [String], tier: M3Tier? = nil) {
+        self.start = start; self.from = from; self.to = to; self.gap = gap; self.fixes = fixes; self.tier = tier
     }
 }
 

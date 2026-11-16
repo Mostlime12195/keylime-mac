@@ -25,12 +25,37 @@ struct ModelSpec {
     let penFormal: [String: Double]
     /// this model's own mirrors (its Hugging Face repo, then Nest), tried before the manifest's top-level base_urls
     let baseUrls: [String]
+    /// an m3 model (manifest models_v2, type m3dict): its files and decoder settings; nil = an m2/m1 step graph
+    var m3: M3Spec? = nil
+
+    /// every file the model needs
+    var files: [ModelFile] { m3?.files ?? [vocab, graph] }
+    var downloadSize: Int64 { files.reduce(0) { $0 + $1.size } }
 
     /// a style's control token (style models only; nil = untagged context)
     func styleToken(_ style: String) -> Int? { WritingStyle.token(style, supportsStyle: supportsStyle, tokens: styleTokens) }
     /// a style's decode params (Style.params, as Android ModelSpec.paramsFor)
     func paramsFor(_ style: String) -> DecodeParams {
         WritingStyle.params(style, supportsStyle: supportsStyle, params: params, styleParams: styleParams, penFormal: penFormal)
+    }
+}
+
+/// models_v2 type m3dict: encoder + decoder graphs, tokenizer, lexicon (+ the optional n-gram), graph facts, params.
+struct M3Spec {
+    let encoder: ModelFile
+    let decoder: ModelFile
+    let vocab: ModelFile
+    let lexicon: ModelFile
+    let ngram: ModelFile?
+    let meta: M3Meta
+    let params: M3Params
+    var files: [ModelFile] { [vocab, lexicon, encoder, decoder] + (ngram.map { [$0] } ?? []) }
+
+    static func from(_ v: V2Model) -> M3Spec? {
+        func f(_ r: String) -> ModelFile? { v.file(r).map { ModelFile(file: $0.file, size: $0.size, sha256: $0.sha256) } }
+        guard let e = f("encoder"), let d = f("decoder"), let voc = f("vocab"), let lex = f("lexicon") else { return nil }
+        return M3Spec(encoder: e, decoder: d, vocab: voc, lexicon: lex, ngram: f("ngram"), meta: M3Meta.from(json: v.config),
+                      params: M3Params.from(json: v.params))
     }
 }
 
@@ -44,7 +69,7 @@ struct Manifest {
         models.first { $0.id == (id ?? defaultId) } ?? models.first { $0.id == defaultId } ?? models.first
     }
 
-    static func parse(_ data: Data) throws -> Manifest {
+    static func parse(_ data: Data, appVersion: String = Updater.currentVersion) throws -> Manifest {
         guard let o = try JSONSerialization.jsonObject(with: data) as? [String: Any], let ms = o["models"] as? [[String: Any]] else {
             throw StoreError.badManifest
         }
@@ -70,6 +95,20 @@ struct Manifest {
                 baseUrls: ModelMirrors.baseUrls(m)))
         }
         if models.isEmpty { throw StoreError.badManifest }
+        // models_v2 (m3): each in the place of the models[] entry it replaces
+        var v2: [ModelSpec] = []
+        let v2m = ModelListV2.parse(o, appVersion: appVersion)
+        for v in v2m {
+            guard let m3 = M3Spec.from(v) else { continue }
+            v2.append(ModelSpec(id: v.id, label: v.label, format: "m3dict", graph: m3.encoder, vocab: m3.vocab,
+                                meta: StepMeta(nKvHeads: m3.meta.nKvHeads, headDim: m3.meta.headDim, convKernel: m3.meta.convKernel,
+                                               dModel: m3.meta.dModel, stateNames: []),
+                                params: .fallback, supportsStyle: true, styleTokens: m3.meta.styleIds, styleParams: [:], penFormal: [:],
+                                baseUrls: v.baseUrls, m3: m3))
+        }
+        let all = models + v2
+        let order = ModelListV2.order(models.map { $0.id }, v2m.filter { m in v2.contains { $0.id == m.id } })
+        models = order.compactMap { id in all.first { $0.id == id } }
         return Manifest(updated: o["updated"] as? String ?? "", baseUrls: o["base_urls"] as? [String] ?? [(o["base_url"] as? String) ?? ""],
                         defaultId: o["default"] as? String ?? models[0].id, models: models)
     }
@@ -116,7 +155,7 @@ final class ModelStore {
         return m.trimmingCharacters(in: .whitespacesAndNewlines) == f.sha256
     }
 
-    func isInstalled(_ s: ModelSpec) -> Bool { isInstalled(s.graph) && isInstalled(s.vocab) }
+    func isInstalled(_ s: ModelSpec) -> Bool { s.files.allSatisfy { isInstalled($0) } }
 
     /// Fetch the manifest (Nest, then GitHub); keeps the cached one when both fail.
     func refreshManifest() async -> Manifest? {
@@ -136,7 +175,7 @@ final class ModelStore {
 
     /// Download + verify every missing file of a model. progress: 0...1 over both files.
     func install(_ s: ModelSpec, progress: @escaping (Double) -> Void) async throws {
-        let files = [s.vocab, s.graph].filter { !isInstalled($0) }
+        let files = s.files.filter { !isInstalled($0) }
         let total = Double(files.reduce(Int64(0)) { $0 + max($1.size, 1) })
         var done = 0.0
         for f in files {

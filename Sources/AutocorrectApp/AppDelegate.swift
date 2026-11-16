@@ -111,7 +111,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             }
         }
         downloadStatus = nil
-        engine.load(spec: spec, graph: store.url(spec.graph), vocab: store.url(spec.vocab))
+        engine.load(spec: spec, url: { [store] in store.url($0) })
     }
 
     private func selectModel(_ id: String) {
@@ -219,7 +219,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         if let m = store.manifest {
             let cur = m.spec(settings.modelId)?.id
             for s in m.models {
-                let it = NSMenuItem(title: s.label + (store.isInstalled(s) ? "" : String(format: " (%.0f MB download)", Double(s.graph.size) / 1e6)),
+                let it = NSMenuItem(title: s.label + (store.isInstalled(s) ? "" : String(format: " (%.0f MB download)", Double(s.downloadSize) / 1e6)),
                                     action: #selector(pickModel(_:)), keyEquivalent: "")
                 it.state = s.id == cur ? .on : .off
                 it.representedObject = s.id

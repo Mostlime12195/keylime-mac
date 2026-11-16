@@ -83,6 +83,8 @@ public final class WordResult {
     public let merge: Merge?
     /// new text for the previous word (re-check flip and/or formal punctuation), nil = unchanged
     public let prevText: String?
+    /// m3: the decoder's tier for this word (Policy maps it); nil for the m2 / m1 corrector
+    public var m3Tier: M3Tier? = nil
 
     init(slot: Slot, scores: [Double], lm: [Double]?, chosen: Int, out: String, skipped: Bool, cheap: Bool, nScored: Int, nCands: Int,
          ms: Double, recheck: Recheck? = nil, merge: Merge? = nil, prevText: String? = nil) {
